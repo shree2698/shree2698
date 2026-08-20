@@ -93,5 +93,5 @@
 ---
 
 <div align="center">
-  <sub>If you find any of my repositories helpful, feel free to star them! Always open to collaborating on innovative AI & Web projects.</sub>
+  <sub>If you find any of my repositories helpful, feel free to star ⭐ them! Always open to collaborating on innovative AI & Web projects.</sub>
 </div>
