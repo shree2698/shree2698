@@ -74,12 +74,20 @@
 ### 📊 GitHub Activity & Stats
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=shree2698&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="GitHub Stats" height="165" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=shree2698&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages" height="165" />
+  <img src="https://streak-stats.demolab.com?user=shree2698&theme=tokyonight&hide_border=true" alt="GitHub Streak Stats" />
 </div>
 
+<br/>
+
 <div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=shree2698&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=shree2698&theme=tokyonight" alt="GitHub Stats" height="180" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=shree2698&theme=tokyonight" alt="Top Languages" height="180" />
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=shree2698&theme=tokyo-night&hide_border=true&area=true" alt="Contribution Graph" />
 </div>
 
 ---
