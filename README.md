@@ -1,6 +1,6 @@
 <div align="center">
 
-# Hi there, I'm Tanushree Mahato 👋
+# Hi there, I'm Tanushree Mahato
 ### Full Stack Developer & AI Application Builder
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-Visit%20Site-blue?style=for-the-badge&logo=vercel&logoColor=white)](https://tanushree-portfolio-five.vercel.app)
@@ -16,16 +16,16 @@
 
 ---
 
-### 💫 About Me
+### About Me
 
-- 💻 **Software Developer** passionate about modern web applications, AI-driven platforms, and intuitive UX.
-- 🤖 **Agentic AI & LLMs:** Building custom AI Agent skills, MCP integrations, and RAG pipelines.
-- 🏢 Working at **Jnine Infotech** | Based in **Bhubaneswar, India 🇮🇳**.
-- 🚀 Passionate about clean architecture, test-driven development, and developer tooling.
+- **Software Developer** passionate about modern web applications, AI-driven platforms, and intuitive UX.
+- **Agentic AI & LLMs:** Building custom AI Agent skills, MCP integrations, and RAG pipelines.
+- Working at **Jnine Infotech** | Based in **Bhubaneswar, India**.
+- Passionate about clean architecture, test-driven development, and developer tooling.
 
 ---
 
-### 🛠️ Tech Stack & Tools
+### Tech Stack & Tools
 
 <div align="center">
 
@@ -60,18 +60,18 @@
 
 ---
 
-### 🚀 Featured Projects
+### Featured Projects
 
 | Project | Description | Tech Stack |
 | :--- | :--- | :--- |
-| **[🏛️ Project Architect](https://github.com/shree2698/project-architect)** | Full-lifecycle SDLC governance and tech discovery skill for AI coding assistants (Antigravity, Cursor, Claude Code). | `AI Agents` `SDLC` `Architecture` |
-| **[⚡ QuickDesk](https://github.com/shree2698/quickdesk)** | AI-powered customer support & help desk platform with automated ticket routing, knowledge search, and analytics. | `Next.js` `TypeScript` `AI` `Prisma` |
-| **[🌱 LifeSync](https://github.com/shree2698/LifeSync)** | Comprehensive personal productivity & wellness suite managing habits, finances, reminders, and daily routines. | `React` `TypeScript` `Node.js` `Tailwind` |
-| **[💼 Souree Tech](https://github.com/shree2698)** | Modern digital transformation and agency portal showcasing enterprise AI solutions. | `Next.js` `TailwindCSS` `Framer Motion` |
+| **[Project Architect](https://github.com/shree2698/project-architect)** | Full-lifecycle SDLC governance and tech discovery skill for AI coding assistants (Antigravity, Cursor, Claude Code). | `AI Agents` `SDLC` `Architecture` |
+| **[QuickDesk](https://github.com/shree2698/quickdesk)** | AI-powered customer support & help desk platform with automated ticket routing, knowledge search, and analytics. | `Next.js` `TypeScript` `AI` `Prisma` |
+| **[LifeSync](https://github.com/shree2698/LifeSync)** | Comprehensive personal productivity & wellness suite managing habits, finances, reminders, and daily routines. | `React` `TypeScript` `Node.js` `Tailwind` |
+| **[Souree Tech](https://github.com/shree2698)** | Modern digital transformation and agency portal showcasing enterprise AI solutions. | `Next.js` `TailwindCSS` `Framer Motion` |
 
 ---
 
-### 📊 GitHub Activity & Stats
+### GitHub Activity & Stats
 
 <div align="center">
   <img src="https://streak-stats.demolab.com?user=shree2698&theme=tokyonight&hide_border=true" alt="GitHub Streak Stats" />
@@ -93,5 +93,5 @@
 ---
 
 <div align="center">
-  <sub>⭐ If you find any of my repositories helpful, feel free to star them! Always open to collaborating on innovative AI & Web projects.</sub>
+  <sub>If you find any of my repositories helpful, feel free to star them! Always open to collaborating on innovative AI & Web projects.</sub>
 </div>
