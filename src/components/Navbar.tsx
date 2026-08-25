@@ -81,18 +81,27 @@ const logoSrc = mounted && theme === "dark" ? sr1 : sr;
           >
             <div className="relative">
               <Image 
-                src={logoSrc} 
-                alt="Tanushree Logo" 
+                src={sr} 
+                alt="Tanushree Logo Light" 
                 width={40} 
                 height={40} 
-                className="rounded-md ring-1 ring-accent/20 group-hover:ring-accent/40 transition-all"
+                priority
+                className="rounded-md ring-1 ring-accent/20 group-hover:ring-accent/40 transition-all dark:hidden block"
+              />
+              <Image 
+                src={sr1} 
+                alt="Tanushree Logo Dark" 
+                width={40} 
+                height={40} 
+                priority
+                className="rounded-md ring-1 ring-accent/20 group-hover:ring-accent/40 transition-all hidden dark:block"
               />
             </div>
             <div className="flex flex-col">
               <span className="text-lg font-bold bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent">
                 Tanushree
               </span>
-              <span className="text-[10px] text-gray-500 dark:text-gray-400 font-mono">
+              <span className="text-[10px] text-foreground/60 font-mono">
                 Full Stack & AI Dev
               </span>
             </div>

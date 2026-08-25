@@ -156,19 +156,14 @@ interface SkillCardProps {
   index: number;
 }
 
-const SkillCard: React.FC<SkillCardProps> = ({ skill, index }) => {
-  const { theme } = useTheme();
+const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
-      className="group cursor-pointer"
+      className="group cursor-pointer transition-all duration-300"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      style={{ 
-        animationDelay: `${index * 100}ms`,
-        animation: `fadeInUp 0.5s ease-out both`
-      }}
     >
       <Card className="relative h-full bg-slate-50 dark:bg-[#0d1117] border border-slate-300 dark:border-[#30363d] hover:border-accent dark:hover:border-accent transition-all duration-300 overflow-hidden rounded-md group-hover:-translate-y-1 group-hover:shadow-md">
         

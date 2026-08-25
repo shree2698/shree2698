@@ -173,7 +173,7 @@ export default function Experience() {
         {/* Stats Section */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
           <div className="text-center p-4 bg-slate-50 dark:bg-[#0d1117] border border-slate-300 dark:border-[#30363d] rounded-md">
-            <div className="text-2xl font-bold text-accent mb-1 font-display">2.5+</div>
+            <div className="text-2xl font-bold text-accent mb-1 font-display">3.4+</div>
             <div className="text-xs text-foreground/70 font-mono">Years Experience</div>
           </div>
           <div className="text-center p-4 bg-slate-50 dark:bg-[#0d1117] border border-slate-300 dark:border-[#30363d] rounded-md">

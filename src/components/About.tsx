@@ -31,7 +31,7 @@ interface Skill {
 const About: React.FC = () => {
 
   const stats: Stat[] = [
-    { value: "2.5+", label: "Years Experience", icon: Calendar },
+    { value: "3.4+", label: "Years Experience", icon: Calendar },
     { value: "15+", label: "Projects Completed", icon: Target },
     { value: "10+", label: "Technologies", icon: Code2 },
     { value: "98%", label: "Client Satisfaction", icon: Award }
@@ -99,7 +99,7 @@ const About: React.FC = () => {
                   <div>
                     <h3 className="text-base font-semibold mb-1 font-display text-foreground">Full-Stack & Next.js Engineering</h3>
                     <p className="text-sm text-foreground/80 leading-relaxed font-sans">
-                      With <span className="text-accent font-semibold font-mono">2.5+ years</span> of professional engineering experience, 
+                      With <span className="text-accent font-semibold font-mono">3.4+ years</span> of professional engineering experience, 
                       I build scalable web applications and high-performance microservices using <span className="text-accent font-semibold">React, Next.js, TypeScript, Node.js, and NestJS</span>.
                     </p>
                   </div>

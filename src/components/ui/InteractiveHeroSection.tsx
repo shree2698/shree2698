@@ -15,6 +15,7 @@ interface Sparkle {
 
 const InteractiveHeroSection: React.FC = () => {
   const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const isDarkMode = resolvedTheme === 'dark';
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
@@ -24,6 +25,10 @@ const InteractiveHeroSection: React.FC = () => {
   const [userInput, setUserInput] = useState('');
   const [timeLeft, setTimeLeft] = useState(30);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Code snippets for the typing game
   const codeSnippets = React.useMemo(() => [
@@ -105,11 +110,14 @@ const InteractiveHeroSection: React.FC = () => {
 
   // Initialize sparkles
   useEffect(() => {
-    generateSparkles();
-  }, [generateSparkles]);
+    if (mounted) {
+      generateSparkles();
+    }
+  }, [mounted, generateSparkles]);
 
   // Animated code rain effect
   useEffect(() => {
+    if (!mounted) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     
@@ -130,8 +138,10 @@ const InteractiveHeroSection: React.FC = () => {
     let lastTime = 0;
     const fps = 20;
     const interval = 1000 / fps;
+    let isCancelled = false;
 
     function draw(currentTime: number) {
+      if (isCancelled) return;
       animationFrameId = requestAnimationFrame(draw);
       
       const delta = currentTime - lastTime;
@@ -139,10 +149,10 @@ const InteractiveHeroSection: React.FC = () => {
       lastTime = currentTime - (delta % interval);
 
       if (!ctx || !canvas) return;
-      ctx.fillStyle = isDarkMode ? 'rgba(15, 23, 42, 0.15)' : 'rgba(255, 255, 255, 0.15)';
+      ctx.fillStyle = isDarkMode ? 'rgba(1, 4, 9, 0.15)' : 'rgba(255, 255, 255, 0.15)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      ctx.fillStyle = isDarkMode ? '#38bdf8' : '#0284c7';
+      ctx.fillStyle = isDarkMode ? '#58a6ff' : '#0969da';
       ctx.font = '13px monospace';
       
       for (let i = 0; i < drops.length; i++) {
@@ -157,8 +167,11 @@ const InteractiveHeroSection: React.FC = () => {
     }
     
     animationFrameId = requestAnimationFrame(draw);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [isDarkMode]);
+    return () => {
+      isCancelled = true;
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [mounted, isDarkMode]);
 
   const openFullscreen = () => {
     setIsFullscreen(true);
@@ -169,6 +182,14 @@ const InteractiveHeroSection: React.FC = () => {
     setIsFullscreen(false);
     resetGame();
   };
+
+  if (!mounted) {
+    return (
+      <div className="relative w-full h-full min-h-[320px] rounded-lg overflow-hidden bg-slate-100 dark:bg-[#0d1117] flex items-center justify-center">
+        <div className="text-5xl font-mono text-accent">{'</>'}</div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative w-full h-full min-h-[320px]">
@@ -191,7 +212,7 @@ const InteractiveHeroSection: React.FC = () => {
 
       {/* Main Interactive Container */}
       <div 
-        className="relative w-full h-full rounded-3xl overflow-hidden cursor-pointer group"
+        className="relative w-full h-full rounded-lg overflow-hidden cursor-pointer group"
         onClick={openFullscreen}
         role="button"
         tabIndex={0}
@@ -214,16 +235,16 @@ const InteractiveHeroSection: React.FC = () => {
         {/* Interactive Code Display */}
         <div className="absolute inset-0 flex items-center justify-center z-20 p-6">
           <div className="text-center space-y-3">
-            <div className="text-5xl md:text-6xl font-mono text-accent group-hover:text-cta transition-colors duration-300">
+            <div className="text-5xl md:text-6xl font-mono text-accent group-hover:text-emerald-400 transition-colors duration-300">
               {'</>'}
             </div>
-            <div className="text-lg text-foreground font-semibold">
+            <div className="text-lg text-foreground font-semibold font-display">
               Interactive Code Challenge
             </div>
-            <p className="text-xs text-foreground/70">
+            <p className="text-xs text-foreground/70 font-sans">
               Click to test your typing & coding skills!
             </p>
-            <div className="inline-flex items-center justify-center space-x-2 mt-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/30 text-accent text-xs font-medium group-hover:bg-accent group-hover:text-white transition-all duration-300">
+            <div className="inline-flex items-center justify-center space-x-2 mt-2 px-3 py-1.5 rounded-md bg-accent/10 border border-accent/30 text-accent text-xs font-medium group-hover:bg-[#238636] group-hover:text-white group-hover:border-[#2ea043] transition-all duration-300 font-mono">
               <Play className="w-3.5 h-3.5" />
               <span>Click to Play</span>
             </div>
@@ -231,16 +252,18 @@ const InteractiveHeroSection: React.FC = () => {
         </div>
 
         {/* Floating Badges */}
-        <div className="absolute top-4 right-4 z-30 p-2 bg-background/60 backdrop-blur-md rounded-full border border-border/40 shadow-sm">
+        <div className="absolute top-4 right-4 z-30 p-2 bg-background/80 backdrop-blur-md rounded-md border border-border/40 shadow-sm">
           <Code2 className="w-4 h-4 text-accent animate-pulse" />
         </div>
-        <button 
-          className="absolute bottom-4 left-4 z-30 p-2 bg-background/60 backdrop-blur-md rounded-full border border-border/40 hover:bg-accent/20 transition-colors"
+        <div 
+          className="absolute bottom-4 left-4 z-30 p-2 bg-background/80 backdrop-blur-md rounded-md border border-border/40 hover:bg-accent/20 transition-colors cursor-pointer"
           onClick={handleSparkleClick}
           aria-label="Refresh animations"
+          role="button"
+          tabIndex={0}
         >
-          <Sparkles className="w-4 h-4 text-cta animate-pulse delay-300" />
-        </button>
+          <Sparkles className="w-4 h-4 text-emerald-400 animate-pulse delay-300" />
+        </div>
       </div>
 
       {/* Fullscreen Game Modal */}
