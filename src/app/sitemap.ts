@@ -1,4 +1,6 @@
-export default function sitemap() {
+﻿import type { MetadataRoute } from 'next';
+
+export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: 'https://tanushree.vercel.app/',
@@ -36,5 +38,5 @@ export default function sitemap() {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
-  ]
+  ];
 }

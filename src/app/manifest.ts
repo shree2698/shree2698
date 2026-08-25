@@ -1,4 +1,6 @@
-export default function manifest() {
+﻿import type { MetadataRoute } from 'next';
+
+export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Tanushree Mahato - Full Stack Developer Portfolio',
     short_name: 'Tanushree Mahato Portfolio',
@@ -24,5 +26,5 @@ export default function manifest() {
         type: 'image/x-icon',
       },
     ],
-  }
+  };
 }
