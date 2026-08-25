@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { Instagram, Linkedin, Mail, Phone, MapPin, Send, Code, Coffee, Zap, Star, CheckCircle2 } from "lucide-react";
+import { useState, useTransition } from "react";
+import { Instagram, Linkedin, Mail, Phone, MapPin, Send, Code, Coffee, Zap, Star, CheckCircle2, AlertCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { sendContactMessage } from "@/app/actions/contact";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -11,8 +12,12 @@ export default function Contact() {
     website: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isPending, startTransition] = useTransition();
+  const [formState, setFormState] = useState<{
+    success: boolean;
+    message: string;
+    errors?: Record<string, string[]>;
+  } | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -21,20 +26,35 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleDirectEmail = () => {
+    const subject = encodeURIComponent(
+      formData.name ? `Portfolio Inquiry from ${formData.name}` : "Portfolio Inquiry"
+    );
+    const body = encodeURIComponent(
+      `Hi Tanushree,\n\nName: ${formData.name || "N/A"}\nEmail: ${formData.email || "N/A"}\n${
+        formData.website ? `Website: ${formData.website}\n` : ""
+      }\nMessage:\n${formData.message || "I'd like to discuss a project with you."}\n`
+    );
+    window.location.href = `mailto:tanushreemahato.261298@gmail.com?subject=${subject}&body=${body}`;
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        website: '',
-        message: ''
-      });
-    }, 1200);
+    const data = new FormData(e.currentTarget);
+    startTransition(async () => {
+      const result = await sendContactMessage(null, data);
+      setFormState(result);
+      if (result.success) {
+        // Also trigger direct mail client redirection
+        handleDirectEmail();
+        setFormData({
+          name: '',
+          email: '',
+          website: '',
+          message: ''
+        });
+      }
+    });
   };
 
   const contactInfo = [
@@ -209,17 +229,18 @@ export default function Contact() {
                   </p>
                 </div>
 
-                {isSubmitted ? (
+                {formState?.success ? (
                   <div className="py-12 text-center space-y-4 animate-in fade-in zoom-in-95 duration-300">
                     <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-500 rounded-full flex items-center justify-center mx-auto shadow-inner">
                       <CheckCircle2 className="w-10 h-10" />
                     </div>
                     <h4 className="text-2xl font-bold text-foreground">Message Received!</h4>
                     <p className="text-sm text-foreground/70 max-w-md mx-auto">
-                      Thank you for reaching out. I have received your message and will get back to you shortly.
+                      {formState.message}
                     </p>
                     <button
-                      onClick={() => setIsSubmitted(false)}
+                      type="button"
+                      onClick={() => setFormState(null)}
                       className="px-6 py-2.5 bg-gradient-to-r from-accent to-cta text-white rounded-xl font-medium text-sm transition-all shadow-md cursor-pointer hover:opacity-90"
                     >
                       Send Another Message
@@ -227,6 +248,16 @@ export default function Contact() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Honeypot field for bot protection */}
+                    <input type="text" name="company_hp" className="hidden" tabIndex={-1} autoComplete="off" />
+
+                    {formState && !formState.success && (
+                      <div className="p-3 bg-red-500/10 border border-red-500/30 text-red-500 rounded-xl flex items-center gap-2 text-sm">
+                        <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                        <span>{formState.message}</span>
+                      </div>
+                    )}
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label htmlFor="contact-name" className="text-sm font-semibold text-slate-600 dark:text-slate-400">
@@ -242,6 +273,9 @@ export default function Contact() {
                           className="w-full p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-foreground focus:border-accent focus:outline-none transition-colors duration-300"
                           placeholder="John Doe"
                         />
+                        {formState?.errors?.name && (
+                          <p className="text-xs text-red-500">{formState.errors.name[0]}</p>
+                        )}
                       </div>
                       <div className="space-y-2">
                         <label htmlFor="contact-email" className="text-sm font-semibold text-slate-600 dark:text-slate-400">
@@ -257,6 +291,9 @@ export default function Contact() {
                           className="w-full p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-foreground focus:border-accent focus:outline-none transition-colors duration-300"
                           placeholder="john@example.com"
                         />
+                        {formState?.errors?.email && (
+                          <p className="text-xs text-red-500">{formState.errors.email[0]}</p>
+                        )}
                       </div>
                     </div>
 
@@ -289,25 +326,38 @@ export default function Contact() {
                         className="w-full p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-foreground focus:border-accent focus:outline-none transition-colors duration-300 resize-none"
                         placeholder="Tell me about your project, timeline, and how I can help you achieve your goals..."
                       />
+                      {formState?.errors?.message && (
+                        <p className="text-xs text-red-500">{formState.errors.message[0]}</p>
+                      )}
                     </div>
 
                     <button
                       type="submit"
-                      disabled={isSubmitting}
+                      disabled={isPending}
                       className="w-full bg-gradient-to-r from-accent to-cta text-white py-4 px-8 rounded-xl font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
                     >
-                      {isSubmitting ? (
+                      {isPending ? (
                         <>
                           <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                          Sending...
+                          Sending & Opening Email...
                         </>
                       ) : (
                         <>
                           <Send className="w-5 h-5" />
-                          Send Message
+                          Send & Open in Email App
                         </>
                       )}
                     </button>
+
+                    <div className="text-center">
+                      <button
+                        type="button"
+                        onClick={handleDirectEmail}
+                        className="text-xs text-accent hover:text-cta underline font-medium cursor-pointer transition-colors"
+                      >
+                        Prefer opening your default mail client directly? Click here (mailto)
+                      </button>
+                    </div>
                   </form>
                 )}
 
