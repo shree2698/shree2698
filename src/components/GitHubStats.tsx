@@ -1,17 +1,37 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import { GitBranch, Star, Code2, Award, Flame, ExternalLink, Trophy } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-
+import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+import { useTheme } from "next-themes";
+import { GitBranch, Star, Code2, Flame, ExternalLink, Trophy, GitCommit } from "lucide-react";
 import { BlurText } from "@/components/reactbits/BlurText";
 import { DecryptedText } from "@/components/reactbits/DecryptedText";
 import { SpotlightCard } from "@/components/reactbits/SpotlightCard";
 import { Magnet } from "@/components/reactbits/Magnet";
 import { AnimatedContent } from "@/components/reactbits/AnimatedContent";
 
+const GitHubCalendar = dynamic(
+  () => import("react-github-calendar").then((mod) => mod.GitHubCalendar),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-32 w-full flex items-center justify-center text-xs text-foreground/60 font-mono animate-pulse">
+        Fetching live GitHub contributions...
+      </div>
+    ),
+  }
+);
+
 export default function GitHubStats() {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const colorScheme = mounted && resolvedTheme === "light" ? "light" : "dark";
+
   return (
     <section className="py-12 bg-background relative overflow-hidden" id="github-activity">
       {/* Background decorations */}
@@ -19,26 +39,26 @@ export default function GitHubStats() {
       <div className="absolute top-20 left-10 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-cta/10 rounded-full blur-3xl" />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
         {/* Section Header */}
         <AnimatedContent distance={25} direction="vertical" className="text-center mb-8 space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md font-mono">
             <GitBranch className="w-4 h-4 text-accent" />
             <span className="text-xs font-medium text-foreground">
-              <DecryptedText text="Continuous Coding & Open Source" animateOn="hover" speed={30} />
+              <DecryptedText text="Open Source & Activity" animateOn="hover" speed={30} />
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display">
-            GitHub & Coding{" "}
+            GitHub Contribution{" "}
             <BlurText 
-              text="Activity" 
+              text="Graph" 
               className="bg-gradient-to-r from-accent to-cta bg-clip-text text-transparent"
               animateBy="words" 
               delay={60} 
             />
           </h2>
           <p className="text-sm text-foreground/80 max-w-2xl mx-auto font-sans">
-            Constantly learning, solving algorithmic problems, and shipping production-grade open source projects.
+            Constantly pushing code, architecting AI tools, and shipping production-grade open source projects.
           </p>
         </AnimatedContent>
 
@@ -57,8 +77,8 @@ export default function GitHubStats() {
                     <Star className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-medium text-foreground/70 font-mono">GitHub Repos</h4>
-                    <p className="text-lg font-bold text-foreground font-display">Active</p>
+                    <h4 className="text-xs font-medium text-foreground/70 font-mono">GitHub Profile</h4>
+                    <p className="text-lg font-bold text-foreground font-display">@shree2698</p>
                   </div>
                 </div>
               </SpotlightCard>
@@ -76,7 +96,7 @@ export default function GitHubStats() {
                     <Trophy className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-medium text-foreground/70 font-mono">LeetCode Profile</h4>
+                    <h4 className="text-xs font-medium text-foreground/70 font-mono">LeetCode</h4>
                     <p className="text-lg font-bold text-foreground font-display">Problem Solver</p>
                   </div>
                 </div>
@@ -87,11 +107,11 @@ export default function GitHubStats() {
               <SpotlightCard className="p-3.5" spotlightColor="rgba(63, 185, 80, 0.15)">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-md bg-emerald-500/10 dark:bg-[#161b22] border border-transparent dark:border-[#30363d] flex items-center justify-center text-[#3fb950]">
-                    <Code2 className="w-5 h-5" />
+                    <GitCommit className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-medium text-foreground/70 font-mono">Core Expertise</h4>
-                    <p className="text-lg font-bold text-foreground font-display">Full Stack & AI</p>
+                    <h4 className="text-xs font-medium text-foreground/70 font-mono">Commit Rate</h4>
+                    <p className="text-lg font-bold text-foreground font-display">Consistent</p>
                   </div>
                 </div>
               </SpotlightCard>
@@ -104,8 +124,8 @@ export default function GitHubStats() {
                     <Flame className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-medium text-foreground/70 font-mono">Architecture</h4>
-                    <p className="text-lg font-bold text-foreground font-display">Agentic SDLC</p>
+                    <h4 className="text-xs font-medium text-foreground/70 font-mono">Focus</h4>
+                    <p className="text-lg font-bold text-foreground font-display">AI & Full Stack</p>
                   </div>
                 </div>
               </SpotlightCard>
@@ -113,17 +133,17 @@ export default function GitHubStats() {
           </div>
         </AnimatedContent>
 
-        {/* Stats Embed Card */}
+        {/* Live GitHub Calendar Contribution Graph */}
         <AnimatedContent distance={30} direction="vertical" delay={200}>
-          <SpotlightCard className="p-4 sm:p-6 max-w-4xl mx-auto shadow-lg" spotlightColor="rgba(88, 166, 255, 0.12)">
+          <SpotlightCard className="p-4 sm:p-6 max-w-4xl mx-auto shadow-xl" spotlightColor="rgba(63, 185, 80, 0.18)">
             <div className="space-y-6">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 border-b border-slate-200 dark:border-[#30363d]">
                 <div>
                   <h3 className="text-base font-bold text-foreground flex items-center gap-2 font-display">
-                    <GitBranch className="w-4 h-4 text-accent" />
-                    GitHub Contribution Activity
+                    <GitBranch className="w-4 h-4 text-[#3fb950]" />
+                    Contribution Activity Graph
                   </h3>
-                  <p className="text-[11px] text-foreground/70 font-mono">Live metrics from @shree2698 on GitHub</p>
+                  <p className="text-[11px] text-foreground/70 font-mono">Live public contribution calendar from GitHub</p>
                 </div>
                 <Magnet magnetStrength={3} padding={15}>
                   <a
@@ -132,27 +152,37 @@ export default function GitHubStats() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-100 dark:bg-[#161b22] text-accent hover:bg-accent hover:text-white border border-slate-300 dark:border-[#30363d] text-xs font-semibold transition-all font-mono"
                   >
-                    <span>View GitHub Profile</span>
+                    <span>Follow on GitHub</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </Magnet>
               </div>
 
-              {/* Streak & Metrics Images */}
-              <div className="flex justify-center overflow-x-auto py-1">
+              {/* Interactive Calendar */}
+              <div className="flex justify-center overflow-x-auto py-3 px-2">
+                <div className="min-w-[680px] flex justify-center">
+                  <GitHubCalendar
+                    username="shree2698"
+                    colorScheme={colorScheme}
+                    fontSize={12}
+                    blockSize={12}
+                    blockMargin={4}
+                    theme={{
+                      light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
+                      dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
+                    }}
+                    labels={{
+                      totalCount: "{{count}} contributions in the last year",
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Streak Stats Banner */}
+              <div className="flex justify-center overflow-x-auto pt-2 border-t border-slate-200 dark:border-[#30363d]">
                 <img
                   src="https://streak-stats.demolab.com?user=shree2698&theme=tokyonight&hide_border=true"
                   alt="GitHub Streak Stats"
-                  className="rounded-md max-w-full shadow-sm"
-                  loading="lazy"
-                />
-              </div>
-
-              {/* Activity Graph */}
-              <div className="flex justify-center overflow-x-auto py-1">
-                <img
-                  src="https://github-readme-activity-graph.vercel.app/graph?username=shree2698&theme=tokyo-night&hide_border=true&area=true"
-                  alt="GitHub Contribution Graph"
                   className="rounded-md max-w-full shadow-sm"
                   loading="lazy"
                 />

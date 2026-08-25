@@ -132,7 +132,7 @@ export default function Contact() {
                   <h3 className="text-2xl font-bold text-foreground mb-2 font-display">
                     Something Special
                     <BlurText 
-                      text="Awaits" 
+                      text=" Awaits" 
                       className="block text-accent"
                       animateBy="words" 
                       delay={50} 

@@ -1,0 +1,38 @@
+﻿.stack-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 800px;
+}
+
+.card-rotate {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  user-select: none;
+}
+
+.card-rotate-disabled {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  user-select: none;
+}
+
+.stack-card {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stack-card img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}

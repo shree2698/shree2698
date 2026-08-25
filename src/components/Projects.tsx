@@ -2,7 +2,7 @@
 
 import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
-import { ExternalLink, Github, Code, Users, Calendar, ArrowRight, Zap, Database, Globe, Bot, Layout, ShieldCheck, Sparkles, FolderGit2 } from "lucide-react";
+import { ExternalLink, Github, Code, Users, Calendar, ArrowRight, Zap, Database, Globe, Bot, Layout, ShieldCheck, Sparkles, FolderGit2, Layers, LayoutGrid } from "lucide-react";
 import { CardContent } from "@/components/ui/card";
 import { BlurText } from "@/components/reactbits/BlurText";
 import { DecryptedText } from "@/components/reactbits/DecryptedText";
@@ -10,6 +10,7 @@ import { SpotlightCard } from "@/components/reactbits/SpotlightCard";
 import { Magnet } from "@/components/reactbits/Magnet";
 import { ShinyText } from "@/components/reactbits/ShinyText";
 import { AnimatedContent } from "@/components/reactbits/AnimatedContent";
+import { Stack } from "@/components/reactbits/Stack";
 
 import crm from "@/assets/images/crm.jpg";
 import mail from "@/assets/images/bullkmail.jpg";
@@ -260,11 +261,124 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
+  const [viewMode, setViewMode] = useState<"stack" | "grid">("stack");
+
   const categories = ["All", ...Array.from(new Set(projects.map(p => p.category)))];
 
   const filteredProjects = filter === "All" 
     ? projects 
     : projects.filter(p => p.category === filter);
+
+  const stackCards = filteredProjects.map((project, index) => {
+    const IconComponent = project.icon;
+    return (
+      <div 
+        key={project.id}
+        className="w-full h-full bg-slate-100 dark:bg-[#0d1117] border border-slate-300 dark:border-[#30363d] rounded-xl overflow-hidden shadow-2xl flex flex-col justify-between select-none relative"
+      >
+        {/* Top Image Section */}
+        <div className="relative h-44 sm:h-52 w-full overflow-hidden flex-shrink-0">
+          <Image
+            src={project.imgSrc}
+            alt={project.title}
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] via-black/40 to-transparent" />
+          
+          {/* Status Badge */}
+          <div className="absolute top-3 right-3 z-10">
+            <span className={`px-2.5 py-0.5 rounded-md text-[11px] font-semibold font-mono border backdrop-blur-md ${
+              project.status === 'Live' ? 'bg-emerald-500/20 text-[#3fb950] border-[#238636]' :
+              project.status === 'In Progress' ? 'bg-amber-500/20 text-amber-400 border-amber-500/40' :
+              'bg-blue-500/20 text-sky-400 border-sky-500/40'
+            }`}>
+              {project.status}
+            </span>
+          </div>
+
+          {/* Floating Icon & Number */}
+          <div className="absolute top-3 left-3 flex items-center gap-2">
+            <div className={`w-9 h-9 rounded-md bg-gradient-to-br ${project.color} p-0.5 shadow-md`}>
+              <div className="w-full h-full bg-white dark:bg-[#161b22] rounded-sm flex items-center justify-center">
+                <IconComponent className="w-4 h-4 text-accent" />
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute bottom-2 left-4">
+            <span className="text-xs font-semibold text-accent uppercase tracking-wider font-mono bg-black/60 px-2 py-0.5 rounded">
+              {project.category}
+            </span>
+          </div>
+        </div>
+
+        {/* Card Body */}
+        <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between bg-slate-50 dark:bg-[#0d1117] font-sans">
+          <div>
+            <div className="flex items-center justify-between mb-1">
+              <h3 className="text-lg sm:text-xl font-bold text-foreground font-display">
+                {project.title}
+              </h3>
+              <span className="text-xs text-foreground/50 font-mono">0{project.id} / 0{filteredProjects.length}</span>
+            </div>
+
+            <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed mb-3 line-clamp-3 font-sans">
+              {project.description}
+            </p>
+
+            {/* Technologies */}
+            <div className="flex flex-wrap gap-1 mb-3 font-mono">
+              {project.technologies.slice(0, 5).map((tech, idx) => (
+                <span
+                  key={idx}
+                  className="px-2 py-0.5 bg-slate-100 dark:bg-[#161b22] text-accent rounded text-[11px] font-medium border border-slate-300 dark:border-[#30363d]"
+                >
+                  {tech}
+                </span>
+              ))}
+              {project.technologies.length > 5 && (
+                <span className="px-1.5 py-0.5 text-[10px] text-foreground/60 font-mono">
+                  +{project.technologies.length - 5}
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Action Links */}
+          <div className="flex items-center justify-between pt-2 border-t border-slate-200 dark:border-[#30363d]">
+            <div className="flex gap-2">
+              {project.demoUrl && (
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 bg-[#238636] hover:bg-[#2ea043] text-white rounded text-xs font-semibold shadow-sm transition-all"
+                >
+                  <Globe className="w-3 h-3" />
+                  Live Demo
+                </a>
+              )}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 bg-slate-200 dark:bg-[#161b22] hover:border-accent text-foreground border border-slate-300 dark:border-[#30363d] rounded text-xs font-semibold transition-all"
+                >
+                  <Github className="w-3 h-3" />
+                  Code
+                </a>
+              )}
+            </div>
+            <span className="text-[11px] text-accent font-mono">Swipe or Drag ➔</span>
+          </div>
+        </div>
+      </div>
+    );
+  });
 
   return (
     <section id="projects" className="py-12 bg-background relative overflow-hidden">
@@ -273,9 +387,9 @@ export default function Projects() {
       <div className="absolute top-40 left-20 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
       <div className="absolute bottom-40 right-20 w-80 h-80 bg-cta/10 rounded-full blur-3xl" />
       
-      <div className="max-w-6xl mx-auto relative">
+      <div className="max-w-6xl mx-auto px-4 relative">
         {/* Header */}
-        <AnimatedContent distance={25} direction="vertical" className="text-center mb-8">
+        <AnimatedContent distance={25} direction="vertical" className="text-center mb-6">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md mb-3 font-mono">
             <FolderGit2 className="w-4 h-4 text-accent" />
             <span className="text-xs font-medium text-foreground">
@@ -292,19 +406,20 @@ export default function Projects() {
             />
           </h2>
           <p className="text-sm md:text-base text-foreground/80 max-w-2xl mx-auto font-sans">
-            Showcasing innovative solutions and cutting-edge technologies that solve real-world problems
+            Showcasing innovative solutions, AI agents, and cutting-edge web applications
           </p>
         </AnimatedContent>
 
-        {/* Filter Tabs */}
+        {/* View Mode & Filter Tabs */}
         <AnimatedContent distance={20} direction="vertical" delay={100}>
-          <div className="flex justify-center mb-8 font-mono">
-            <div className="flex flex-wrap justify-center bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md p-1 gap-1 max-w-full">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+            {/* Filter Tabs */}
+            <div className="flex flex-wrap justify-center bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md p-1 gap-1 max-w-full font-mono">
               {categories.map((category) => (
-                <Magnet key={category} magnetStrength={4} padding={15}>
+                <Magnet key={category} magnetStrength={3} padding={12}>
                   <button
                     onClick={() => setFilter(category)}
-                    className={`px-3.5 py-1.5 rounded-md text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                    className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all duration-200 cursor-pointer ${
                       filter === category
                         ? 'bg-[#238636] border border-[#2ea043] text-white shadow-sm'
                         : 'text-foreground/70 hover:text-accent hover:bg-slate-200 dark:hover:bg-[#21262d]'
@@ -315,17 +430,67 @@ export default function Projects() {
                 </Magnet>
               ))}
             </div>
+
+            {/* View Mode Toggle */}
+            <div className="inline-flex items-center bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md p-1 gap-1 font-mono text-xs">
+              <button
+                onClick={() => setViewMode("stack")}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer ${
+                  viewMode === "stack"
+                    ? "bg-[#238636] text-white shadow-sm"
+                    : "text-foreground/70 hover:text-accent"
+                }`}
+              >
+                <Layers className="w-3.5 h-3.5" />
+                3D Stack
+              </button>
+              <button
+                onClick={() => setViewMode("grid")}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer ${
+                  viewMode === "grid"
+                    ? "bg-[#238636] text-white shadow-sm"
+                    : "text-foreground/70 hover:text-accent"
+                }`}
+              >
+                <LayoutGrid className="w-3.5 h-3.5" />
+                Grid View
+              </button>
+            </div>
           </div>
         </AnimatedContent>
 
-        {/* Projects Grid */}
-        <div className="space-y-6 max-w-6xl mx-auto">
-          {filteredProjects.map((project, index) => (
-            <AnimatedContent key={project.id} distance={35} direction="vertical" delay={index * 100}>
-              <ProjectCard project={project} index={index} />
-            </AnimatedContent>
-          ))}
-        </div>
+        {/* 3D Stack View Mode */}
+        {viewMode === "stack" ? (
+          <AnimatedContent distance={30} direction="vertical" delay={150}>
+            <div className="flex flex-col items-center justify-center py-4">
+              <div className="w-full max-w-lg h-[460px] sm:h-[490px] relative mx-auto mb-6">
+                <Stack
+                  cards={stackCards}
+                  randomRotation={true}
+                  sensitivity={120}
+                  sendToBackOnClick={true}
+                  autoplay={false}
+                />
+              </div>
+
+              {/* Hint bar */}
+              <div className="text-center space-y-1 font-mono">
+                <p className="text-xs text-foreground/70">
+                  💡 <strong className="text-accent">Drag</strong> card or <strong className="text-accent">Click</strong> anywhere on it to cycle to the next project
+                </p>
+              </div>
+            </div>
+          </AnimatedContent>
+        ) : (
+          /* Grid View Mode */
+          <div className="space-y-6 max-w-6xl mx-auto">
+            {filteredProjects.map((project, index) => (
+              <AnimatedContent key={project.id} distance={35} direction="vertical" delay={index * 100}>
+                <ProjectCard project={project} index={index} />
+              </AnimatedContent>
+            ))}
+          </div>
+        )}
 
         {/* CTA Section */}
         <AnimatedContent distance={30} direction="vertical" delay={250}>
