@@ -2,7 +2,7 @@
 
 import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
-import { ExternalLink, Github, Code, Users, Calendar, ArrowRight, Zap, Database, Globe, Mail, Settings, Leaf } from "lucide-react";
+import { ExternalLink, Github, Code, Users, Calendar, ArrowRight, Zap, Database, Globe, Bot, Layout, ShieldCheck, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 import crm from "@/assets/images/crm.jpg";
@@ -30,66 +30,67 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Customer Relationship Management",
-    description: "A comprehensive CRM solution that revolutionizes customer interactions through advanced data analytics, automated workflows, and intelligent customer insights. Features real-time dashboard, lead management, and predictive analytics.",
+    title: "Project Architect",
+    description: "Full-lifecycle SDLC governance and tech discovery skill for AI coding assistants (Antigravity, Cursor, Claude Code). Implements automatic technology discovery, 21-phase QA audits, architectural blueprints, and safe defect remediation.",
     imgSrc: crm,
-    category: "Enterprise Software",
-    technologies: ["React", "Node.js", "MongoDB", "Express", "TypeScript", "Chart.js"],
-    features: ["Customer Analytics", "Lead Management", "Automated Workflows", "Real-time Dashboard"],
-    status: "Completed",
-    duration: "6 months",
-    teamSize: "5 developers",
-    icon: Database,
-    color: "from-blue-500 to-cyan-500",
-    demoUrl: "https://github.com/shree2698",
-    githubUrl: "https://github.com/shree2698"
+    category: "AI & Developer Tooling",
+    technologies: ["AI Agents", "TypeScript", "SDLC Governance", "Architecture", "MCP", "CLI Tooling"],
+    features: ["Automated Stack Discovery", "21-Phase QA Matrix", "Defect Remediation", "Cross-Agent Protocol"],
+    status: "Live",
+    duration: "Open Source",
+    teamSize: "Lead Architect",
+    icon: Bot,
+    color: "from-blue-500 to-indigo-600",
+    demoUrl: "https://github.com/shree2698/project-architect",
+    githubUrl: "https://github.com/shree2698/project-architect"
   },
   {
     id: 2,
-    title: "BulkEmail Marketing Platform",
-    description: "A powerful email marketing solution with advanced segmentation, A/B testing, and comprehensive analytics. Delivers high-performance bulk email campaigns with enterprise-grade deliverability and automation.",
+    title: "QuickDesk AI Support",
+    description: "AI-powered customer support and help desk platform with automated ticket routing, semantic search with RAG knowledge embeddings, multi-tenant dashboard, and real-time response analytics.",
     imgSrc: mail,
-    category: "Marketing Tool",
-    technologies: ["React", "Python", "Redis", "PostgreSQL", "AWS SES", "Docker"],
-    features: ["A/B Testing", "Email Templates", "Advanced Analytics", "Campaign Automation"],
-    status: "Live",
+    category: "AI & SaaS Platforms",
+    technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "AI Embeddings", "TailwindCSS"],
+    features: ["Automated Ticket Triage", "RAG Knowledge Search", "Real-time Metrics", "Multi-tenant Architecture"],
+    status: "Completed",
     duration: "4 months",
-    teamSize: "3 developers",
-    icon: Mail,
-    color: "from-emerald-500 to-teal-500",
-    demoUrl: "https://github.com/shree2698",
-    githubUrl: "https://github.com/shree2698"
+    teamSize: "Full Stack Lead",
+    icon: Sparkles,
+    color: "from-purple-500 to-pink-500",
+    demoUrl: "https://github.com/shree2698/quickdesk",
+    githubUrl: "https://github.com/shree2698/quickdesk"
   },
   {
     id: 3,
-    title: "Project Management System",
-    description: "An intuitive project management platform that streamlines team collaboration, task tracking, and resource allocation. Features Kanban boards, Gantt charts, time tracking, and comprehensive reporting.",
+    title: "LifeSync Productivity Suite",
+    description: "Comprehensive personal productivity and wellness suite unifying habit tracking, financial budget analytics, dynamic calendar reminders, and automated daily routines into an intuitive interface.",
     imgSrc: pms,
-    category: "Productivity Tool",
-    technologies: ["Vue.js", "Laravel", "MySQL", "Socket.io", "Chart.js", "PWA"],
-    features: ["Kanban Boards", "Time Tracking", "Team Collaboration", "Resource Management"],
+    category: "Full Stack Applications",
+    technologies: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "TailwindCSS"],
+    features: ["Habit Tracking", "Budget Analytics", "Daily Routine Planner", "Interactive Visualizations"],
     status: "Completed",
-    duration: "8 months",
-    teamSize: "4 developers",
-    icon: Settings,
-    color: "from-purple-500 to-pink-500",
-    demoUrl: "https://github.com/shree2698",
-    githubUrl: "https://github.com/shree2698"
+    duration: "3 months",
+    teamSize: "Independent Developer",
+    icon: Layout,
+    color: "from-emerald-500 to-teal-500",
+    demoUrl: "https://github.com/shree2698/LifeSync",
+    githubUrl: "https://github.com/shree2698/LifeSync"
   },
   {
     id: 4,
-    title: "ICAR-CIWA Agricultural Platform",
-    description: "A government initiative for sustainable agricultural development, featuring research data management, farmer support systems, and innovative farming technique dissemination to enhance food security across India.",
+    title: "Souree Tech Agency Portal",
+    description: "Modern digital transformation agency portal showcasing enterprise AI solutions, interactive case studies, responsive micro-animations, and fast edge-optimized static rendering.",
     imgSrc: icar,
-    category: "Government Project",
-    technologies: ["Angular", "Spring Boot", "Oracle DB", "Jenkins", "Kubernetes", "GIS"],
-    features: ["Research Management", "Farmer Portal", "Data Analytics", "GIS Integration"],
+    category: "Web & Digital Experience",
+    technologies: ["Next.js", "TailwindCSS", "Framer Motion", "TypeScript", "Vercel"],
+    features: ["Edge Rendering", "Interactive Animations", "Enterprise Showcase", "SEO Optimized"],
     status: "Live",
-    duration: "12 months",
-    teamSize: "8 developers",
-    icon: Leaf,
-    color: "from-green-500 to-lime-500",
-    demoUrl: "https://icar-ciwa.gov.in"
+    duration: "2 months",
+    teamSize: "Frontend Specialist",
+    icon: Globe,
+    color: "from-amber-500 to-orange-500",
+    demoUrl: "https://tanushree-portfolio-five.vercel.app",
+    githubUrl: "https://github.com/shree2698"
   },
 ];
 

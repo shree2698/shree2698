@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { Instagram, Linkedin, Mail, Phone, MapPin, Send, Code, Coffee, Zap, Star, CheckCircle2, AlertCircle } from "lucide-react";
+import { Instagram, Linkedin, Github, Trophy, Mail, Phone, MapPin, Send, Code, Coffee, Zap, Star, CheckCircle2, AlertCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { sendContactMessage } from "@/app/actions/contact";
 
@@ -83,16 +83,28 @@ export default function Contact() {
 
   const socialLinks = [
     {
-      icon: Instagram,
-      name: "Instagram",
-      href: "https://www.instagram.com/tshree.mahato/",
-      color: "from-pink-500 to-rose-500"
+      icon: Github,
+      name: "GitHub",
+      href: "https://github.com/shree2698",
+      color: "from-slate-700 to-slate-900"
     },
     {
       icon: Linkedin,
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/tanushree-mahato-a6a16920a",
       color: "from-blue-600 to-blue-700"
+    },
+    {
+      icon: Trophy,
+      name: "LeetCode",
+      href: "https://leetcode.com/u/tshreem1998/",
+      color: "from-amber-500 to-orange-500"
+    },
+    {
+      icon: Instagram,
+      name: "Instagram",
+      href: "https://www.instagram.com/tshree.mahato/",
+      color: "from-pink-500 to-rose-500"
     }
   ];
 

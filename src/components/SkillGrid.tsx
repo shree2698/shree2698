@@ -13,87 +13,141 @@ import {
   FileCode, 
   Cpu,
   Server,
-  Wrench
+  Wrench,
+  Bot,
+  Container,
+  GitBranch,
+  Terminal,
+  Sparkles
 } from "lucide-react";
 
 type Skill = {
   name: string;
-  category: string;
+  category: "Frontend" | "Backend" | "Databases" | "AI & Tools";
   icon: React.ComponentType<{ className?: string }>;
   description: string;
   proficiency: number;
 };
 
 const skills: Skill[] = [
+  // Frontend
   { 
-    name: "JavaScript", 
-    category: "Language", 
-    icon: FileCode, 
-    description: "Modern ES6+ features & async programming",
-    proficiency: 90
-  },
-  { 
-    name: "Node.js", 
-    category: "Runtime", 
-    icon: Server, 
-    description: "Server-side JavaScript runtime environment",
-    proficiency: 85
-  },
-  { 
-    name: "Express", 
-    category: "Framework", 
-    icon: Globe, 
-    description: "Fast, unopinionated web framework",
-    proficiency: 88
-  },
-  { 
-    name: "MongoDB", 
-    category: "Database", 
-    icon: Database, 
-    description: "NoSQL document-based database",
-    proficiency: 82
-  },
-  { 
-    name: "React", 
-    category: "Library", 
+    name: "React.js", 
+    category: "Frontend", 
     icon: Code2, 
-    description: "Component-based UI library",
-    proficiency: 92
-  },
-  { 
-    name: "Tailwind", 
-    category: "CSS", 
-    icon: Palette, 
-    description: "Utility-first CSS framework",
-    proficiency: 90
-  },
-  { 
-    name: "Vite", 
-    category: "Build Tool", 
-    icon: Zap, 
-    description: "Lightning fast development server",
-    proficiency: 85
-  },
-  { 
-    name: "HTML", 
-    category: "Markup", 
-    icon: FileCode, 
-    description: "Semantic web markup language",
+    description: "Component-driven architecture, custom hooks, state management",
     proficiency: 95
   },
   { 
-    name: "CSS", 
-    category: "Styling", 
+    name: "Next.js", 
+    category: "Frontend", 
+    icon: Globe, 
+    description: "App router, SSR, SSG, Server Actions, Edge optimization",
+    proficiency: 92
+  },
+  { 
+    name: "TypeScript", 
+    category: "Frontend", 
+    icon: FileCode, 
+    description: "Strict static typing, interfaces, generics, enterprise DX",
+    proficiency: 90
+  },
+  { 
+    name: "Tailwind CSS", 
+    category: "Frontend", 
     icon: Palette, 
-    description: "Modern styling with animations",
+    description: "Modern responsive utility-first CSS, dark mode design",
+    proficiency: 95
+  },
+  { 
+    name: "JavaScript (ES6+)", 
+    category: "Frontend", 
+    icon: Zap, 
+    description: "Asynchronous patterns, modern DOM APIs, closures",
+    proficiency: 92
+  },
+
+  // Backend
+  { 
+    name: "Node.js", 
+    category: "Backend", 
+    icon: Server, 
+    description: "High-throughput asynchronous event-driven backend services",
+    proficiency: 90
+  },
+  { 
+    name: "Express.js", 
+    category: "Backend", 
+    icon: Globe, 
+    description: "RESTful routing, middleware pipelines, microservices",
+    proficiency: 90
+  },
+  { 
+    name: "NestJS", 
+    category: "Backend", 
+    icon: Cpu, 
+    description: "Modular enterprise architecture, dependency injection, decorators",
+    proficiency: 82
+  },
+
+  // Databases & ORM
+  { 
+    name: "MongoDB", 
+    category: "Databases", 
+    icon: Database, 
+    description: "Document aggregation pipelines, indexing, Mongoose schemas",
     proficiency: 88
   },
   { 
-    name: "Java", 
-    category: "Language", 
-    icon: Cpu, 
-    description: "Object-oriented programming language",
+    name: "PostgreSQL", 
+    category: "Databases", 
+    icon: Database, 
+    description: "Relational modeling, complex queries, transactions",
+    proficiency: 85
+  },
+  { 
+    name: "Prisma ORM", 
+    category: "Databases", 
+    icon: Layers, 
+    description: "Type-safe database queries, schema migrations, relations",
+    proficiency: 88
+  },
+  { 
+    name: "MySQL", 
+    category: "Databases", 
+    icon: Database, 
+    description: "Relational database design, ACID compliance, query tuning",
+    proficiency: 82
+  },
+
+  // AI & DevOps
+  { 
+    name: "Agentic AI & MCP", 
+    category: "AI & Tools", 
+    icon: Bot, 
+    description: "Custom AI Agent skills, Model Context Protocol, tool leasing",
+    proficiency: 90
+  },
+  { 
+    name: "LangChain & RAG", 
+    category: "AI & Tools", 
+    icon: Sparkles, 
+    description: "Context retrieval augmentation, vector search, prompt chains",
+    proficiency: 84
+  },
+  { 
+    name: "Docker", 
+    category: "AI & Tools", 
+    icon: Container, 
+    description: "Containerization, multi-stage Dockerfiles, compose environments",
     proficiency: 80
+  },
+  { 
+    name: "Git & GitHub", 
+    category: "AI & Tools", 
+    icon: GitBranch, 
+    description: "Version control workflows, CI/CD actions, open source",
+    proficiency: 94
   },
 ];
 
@@ -186,8 +240,12 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index }) => {
 };
 
 const SkillsGrid: React.FC = () => {
-  const { theme } = useTheme();
-  const categories = [...new Set(skills.map(skill => skill.category))];
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const categories = ["All", "Frontend", "Backend", "Databases", "AI & Tools"];
+
+  const filteredSkills = selectedCategory === "All"
+    ? skills
+    : skills.filter(s => s.category === selectedCategory);
 
   return (
     <section className="relative py-20 bg-background overflow-hidden" id="skills">
@@ -212,39 +270,39 @@ const SkillsGrid: React.FC = () => {
           
           <div className="space-y-4">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
-              My{' '}
+              Tech Stack &{' '}
               <span className="bg-gradient-to-r from-accent to-cta bg-clip-text text-transparent">
                 Skills
               </span>
             </h2>
             
             <p className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed">
-              Building exceptional digital experiences with cutting-edge technologies and proven development practices
+              Full-Stack development, modern databases, and state-of-the-art AI Agent architecture
             </p>
           </div>
 
-          {/* Category Pills */}
+          {/* Category Filter Pills */}
           <div className="flex flex-wrap justify-center gap-2 mt-8">
-            <div className="flex items-center gap-1 px-3 py-1 bg-foreground/5 border border-border rounded-full text-sm text-foreground/60">
-              <Wrench className="w-3 h-3" />
-              <span className="text-xs font-medium">Technologies:</span>
-            </div>
-            {categories.map((category, index) => (
-              <span
+            {categories.map((category) => (
+              <button
                 key={category}
-                className="px-3 py-1 bg-background border border-border rounded-full text-sm text-foreground/70 hover:bg-accent/10 hover:border-accent/30 hover:text-accent transition-all duration-300 cursor-pointer"
-                style={{ animationDelay: `${index * 100}ms` }}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer ${
+                  selectedCategory === category
+                    ? "bg-gradient-to-r from-accent to-cta text-white shadow-md shadow-accent/20 scale-105"
+                    : "bg-background/80 border border-border text-foreground/70 hover:bg-accent/10 hover:border-accent/30 hover:text-accent"
+                }`}
               >
                 {category}
-              </span>
+              </button>
             ))}
           </div>
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 mb-16">
-          {skills.map((skill, index) => (
-            <SkillCard key={index} skill={skill} index={index} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+          {filteredSkills.map((skill, index) => (
+            <SkillCard key={skill.name} skill={skill} index={index} />
           ))}
         </div>
 
@@ -259,23 +317,10 @@ const SkillsGrid: React.FC = () => {
           </div>
           
           <p className="text-sm text-foreground/60 max-w-md mx-auto">
-            Passionate about staying current with emerging technologies and industry best practices
+            Passionate about clean architecture, scalable backends, and agentic AI systems
           </p>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </section>
   );
 };

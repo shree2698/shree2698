@@ -97,11 +97,10 @@ const About: React.FC = () => {
                     <Code2 className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Full-Stack Expertise</h3>
+                    <h3 className="text-xl font-semibold mb-2">Full-Stack & Next.js Engineering</h3>
                     <p className="text-foreground/70 leading-relaxed">
-                      With <span className="text-accent font-semibold">2.1 years</span> of hands-on experience, 
-                      I specialize in the <span className="text-cta font-semibold">MERN stack</span>, building 
-                      scalable applications that deliver exceptional user experiences.
+                      With <span className="text-accent font-semibold">2.5+ years</span> of professional engineering experience, 
+                      I build scalable web applications and high-performance microservices using <span className="text-cta font-semibold">React, Next.js, TypeScript, Node.js, and NestJS</span>.
                     </p>
                   </div>
                 </div>
@@ -113,11 +112,9 @@ const About: React.FC = () => {
                     <Globe className="w-5 h-5 text-cta" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Modern Web Technologies</h3>
+                    <h3 className="text-xl font-semibold mb-2">Agentic AI, MCP & LLM Pipelines</h3>
                     <p className="text-foreground/70 leading-relaxed">
-                      Proficient in <span className="text-accent font-semibold">GraphQL</span> and 
-                      <span className="text-cta font-semibold"> REST APIs</span>, I bring comprehensive 
-                      understanding of modern web architecture and best practices.
+                      Pioneering modern AI systems, I build <span className="text-accent font-semibold">AI Agent skills, Model Context Protocol (MCP) servers</span>, and RAG architectures that automate complex workflows.
                     </p>
                   </div>
                 </div>
@@ -129,10 +126,9 @@ const About: React.FC = () => {
                     <Lightbulb className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Innovation & Problem Solving</h3>
+                    <h3 className="text-xl font-semibold mb-2">Industry Experience & Clean Architecture</h3>
                     <p className="text-foreground/70 leading-relaxed">
-                      My passion for innovation drives me to tackle complex challenges and deliver 
-                      high-quality solutions through collaborative teamwork and agile methodologies.
+                      Working as a Software Developer at <strong>Jnine Infotech</strong> in Bhubaneswar, India, I focus on test-driven development, database optimization (PostgreSQL, MongoDB, Prisma), and modern developer tooling.
                     </p>
                   </div>
                 </div>

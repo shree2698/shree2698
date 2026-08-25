@@ -14,13 +14,32 @@ export default function Footer() {
         </p>
 
         {/* Right Side - Links */}
-        <div className="flex space-x-4 text-sm">
+        <div className="flex flex-wrap gap-4 text-sm">
           <Link href="#projects" className="hover:underline">
             Projects
+          </Link>
+          <Link href="#github-activity" className="hover:underline">
+            Activity
           </Link>
           <Link href="#contact" className="hover:underline">
             Contact
           </Link>
+          <a
+            href="https://github.com/shree2698"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://leetcode.com/u/tshreem1998/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline text-amber-500"
+          >
+            LeetCode
+          </a>
           <a
             href="https://www.linkedin.com/in/tanushree-mahato-a6a16920a"
             target="_blank"

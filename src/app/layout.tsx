@@ -16,22 +16,23 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://tanushree.vercel.app'),
-  title: 'Tanushree Mahato - Full Stack Developer | React, Next.js, Node.js Expert',
-  description: 'Experienced Full Stack Developer with 5+ years in React, Next.js, Node.js, and Python. View my portfolio showcasing 20+ successful projects including e-commerce platforms, web applications, and mobile apps.',
+  title: 'Tanushree Mahato - Full Stack Developer & AI Application Builder',
+  description: 'Full Stack Developer & AI Application Builder specializing in React, Next.js, Node.js, NestJS, and Agentic AI systems. Explore featured projects, live coding stats, and skills.',
   keywords: [
-    'full stack developer',
-    'react developer',
-    'nextjs developer',
-    'nodejs developer',
-    'web developer',
-    'javascript expert',
-    'typescript',
-    'python developer',
-    'portfolio',
+    'Full Stack Developer',
+    'AI Application Builder',
+    'Agentic AI',
+    'React Developer',
+    'Next.js Specialist',
+    'Node.js Developer',
+    'NestJS',
+    'TypeScript',
+    'Prisma ORM',
+    'PostgreSQL',
+    'MongoDB',
+    'MCP Protocol',
     'Tanushree Mahato',
-    'software engineer',
-    'frontend developer',
-    'backend developer'
+    'Software Engineer Bhubaneswar'
   ],
   authors: [{ name: 'Tanushree Mahato' }],
   creator: 'Tanushree Mahato',
@@ -50,8 +51,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://tanushree.vercel.app/',
-    title: 'Tanushree Mahato - Full Stack Developer Portfolio',
-    description: 'Experienced developer specializing in modern web technologies. Check out my projects and skills.',
+    title: 'Tanushree Mahato - Full Stack Developer & AI Application Builder',
+    description: 'Portfolio showcasing modern web applications, AI Agents, and scalable backend architectures.',
     siteName: 'Tanushree Mahato Portfolio',
     images: [
       {
@@ -64,10 +65,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tanushree Mahato - Full Stack Developer',
-    description: 'Portfolio showcasing modern web development projects and expertise.',
+    title: 'Tanushree Mahato - Full Stack Developer & AI Application Builder',
+    description: 'Portfolio showcasing modern web development projects, AI Agents, and technical expertise.',
     images: ['/tanulight.png'],
-    creator: '@tanushree',
+    creator: '@shree2698',
   },
   alternates: {
     canonical: 'https://tanushree.vercel.app/',
@@ -90,25 +91,34 @@ export default function RootLayout({
               name: 'Tanushree Mahato',
               url: 'https://tanushree.vercel.app/',
               image: '/tanulight.png',
-              jobTitle: 'Full Stack Developer',
-              description: 'Experienced Full Stack Developer specializing in React, Next.js, and Node.js',
+              jobTitle: 'Full Stack Developer & AI Application Builder',
+              description: 'Full Stack Developer specializing in React, Next.js, Node.js, NestJS, and Agentic AI',
               sameAs: [
                 'https://www.linkedin.com/in/tanushree-mahato-a6a16920a',
                 'https://github.com/shree2698',
+                'https://leetcode.com/u/tshreem1998/'
               ],
               knowsAbout: [
-                'JavaScript',
                 'React',
                 'Next.js',
-                'Node.js',
-                'Python',
                 'TypeScript',
-                'Web Development'
+                'Node.js',
+                'NestJS',
+                'Agentic AI',
+                'MCP Protocol',
+                'PostgreSQL',
+                'MongoDB',
+                'Prisma',
+                'Tailwind CSS'
               ],
-              alumniOf: 'Trident Technology, Bhubaneswar',
+              worksFor: {
+                '@type': 'Organization',
+                name: 'Jnine Infotech'
+              },
               address: {
                 '@type': 'PostalAddress',
-                addressLocality: 'Bangalore',
+                addressLocality: 'Bhubaneswar',
+                addressRegion: 'Odisha',
                 addressCountry: 'India'
               }
             })

@@ -3,7 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Menu, Download, X, Github, Linkedin, Mail } from "lucide-react"
+import { Menu, Download, X, Github, Linkedin, Mail, Trophy } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
@@ -40,6 +40,7 @@ const Navbar: React.FC = () => {
     { href: "#skills", label: "Skills" },
     { href: "#experience", label: "Experience" },
     { href: "#projects", label: "Projects" },
+    { href: "#github-activity", label: "Activity" },
     { href: "#contact", label: "Contact" },
   ]
  React.useEffect(() => {
@@ -93,7 +94,7 @@ const logoSrc = mounted && theme === "dark" ? sr1 : sr;
                 Tanushree
               </span>
               <span className="text-xs text-gray-500 dark:text-gray-400 font-mono">
-                Full Stack Developer
+                Full Stack & AI Dev
               </span>
             </div>
           </Link>
@@ -135,11 +136,21 @@ const logoSrc = mounted && theme === "dark" ? sr1 : sr;
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="w-9 h-9 rounded-full hover:bg-accent/10 hover:text-accent transition-colors"
+                className="w-9 h-9 rounded-full hover:bg-blue-600/10 hover:text-blue-600 transition-colors"
                 asChild
               >
                 <Link href="https://www.linkedin.com/in/tanushree-mahato-a6a16920a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                   <Linkedin className="h-4 w-4" />
+                </Link>
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="w-9 h-9 rounded-full hover:bg-amber-500/10 hover:text-amber-500 transition-colors"
+                asChild
+              >
+                <Link href="https://leetcode.com/u/tshreem1998/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+                  <Trophy className="h-4 w-4" />
                 </Link>
               </Button>
             </div>
@@ -245,6 +256,16 @@ const logoSrc = mounted && theme === "dark" ? sr1 : sr;
                       >
                         <Link href="https://www.linkedin.com/in/tanushree-mahato-a6a16920a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                           <Linkedin className="h-4 w-4" />
+                        </Link>
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        size="icon" 
+                        className="rounded-full border-border hover:bg-accent/10"
+                        asChild
+                      >
+                        <Link href="https://leetcode.com/u/tshreem1998/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+                          <Trophy className="h-4 w-4" />
                         </Link>
                       </Button>
                       <Button 
