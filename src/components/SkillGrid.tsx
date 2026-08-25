@@ -244,7 +244,7 @@ const SkillsGrid: React.FC = () => {
         <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-cta/5 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <AnimatedContent distance={25} direction="vertical" className="text-center mb-10 space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md font-mono">

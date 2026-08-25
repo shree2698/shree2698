@@ -20,6 +20,7 @@ import { DecryptedText } from "@/components/reactbits/DecryptedText";
 import { ShinyText } from "@/components/reactbits/ShinyText";
 import { Magnet } from "@/components/reactbits/Magnet";
 import { AnimatedContent } from "@/components/reactbits/AnimatedContent";
+import { TextType } from "@/components/reactbits/TextType";
 
 const Hero: React.FC = () => {
     const [taglineIndex, setTaglineIndex] = useState(0);
@@ -83,17 +84,17 @@ const Hero: React.FC = () => {
     const experienceInYears = ((now.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365)).toFixed(1);
 
     return (
-        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-background" id="home">
+        <section className="relative min-h-[90vh] w-full max-w-6xl mx-auto flex items-center justify-center overflow-hidden bg-background" id="home">
             {/* Background elements */}
             <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:40px_40px]" />
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
 
-            <div className="container mx-auto px-4 pt-16 pb-8 relative z-10">
+            <div className="max-w-6xl mx-auto pt-16 pb-8 relative z-10">
                 <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[calc(90vh-4rem)]">
 
                     {/* Content Section */}
-                    <AnimatedContent distance={30} direction="vertical" delay={100} className="space-y-6 lg:pr-6">
+                    <AnimatedContent distance={30} direction="vertical" delay={100} className="pt-5 space-y-6 lg:pr-6">
                         {/* Status Badge */}
                         <div className="inline-flex items-center gap-2 max-w-full flex-wrap px-3 py-1.5 bg-slate-100/80 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md backdrop-blur-sm font-mono">
                             <div className="flex items-center gap-2">
@@ -122,11 +123,18 @@ const Hero: React.FC = () => {
                                 <span className="text-foreground">.</span>
                             </h1>
 
-                            <div className="flex items-center gap-3 text-lg md:text-xl lg:text-2xl font-semibold min-h-[36px]">
+                            <div className="flex items-center gap-2.5 text-lg md:text-xl lg:text-2xl font-semibold min-h-[36px] font-display">
                                 <Bot className="w-6 h-6 text-accent flex-shrink-0 animate-bounce" />
-                                <span key={taglineIndex} className="text-foreground transition-all duration-500">
-                                    {taglines[taglineIndex]}
-                                </span>
+                                <TextType
+                                    text={taglines}
+                                    typingSpeed={50}
+                                    deletingSpeed={25}
+                                    pauseDuration={2200}
+                                    showCursor={true}
+                                    cursorCharacter="▋"
+                                    cursorClassName="text-accent text-base"
+                                    className="text-foreground"
+                                />
                                 <Sparkles className="w-4 h-4 text-emerald-400 animate-pulse flex-shrink-0" />
                             </div>
                         </div>

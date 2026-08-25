@@ -1,0 +1,29 @@
+.rolling-gallery-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.rolling-gallery-track {
+  position: relative;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rolling-gallery-item {
+  position: absolute;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

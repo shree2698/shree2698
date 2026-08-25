@@ -77,7 +77,7 @@ const About: React.FC = () => {
       <div className="absolute top-0 left-1/4 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cta/10 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <AnimatedContent distance={25} direction="vertical" className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md mb-3 font-mono">

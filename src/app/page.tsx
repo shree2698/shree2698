@@ -6,12 +6,20 @@ import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import SkillsGrid from "@/components/SkillGrid";
 import GitHubStats from "@/components/GitHubStats";
+import { CurvedLoop } from "@/components/reactbits/CurvedLoop";
 
 export default function Home() {
   return (
     <div className="min-h-screen w-full flex flex-col items-center">
-      <main className="w-full max-w-7xl px-3 sm:px-4 lg:px-6">
+      <main className="w-full">
         <Hero />
+        <div className="py-2 opacity-80 hover:opacity-100 transition-opacity">
+          <CurvedLoop
+            text="NEXT.JS • REACT • AGENTIC AI • TYPESCRIPT • FULL STACK • MCP • PYTHON • "
+            speed={1.2}
+            className="fill-accent font-mono text-xs tracking-widest uppercase font-semibold"
+          />
+        </div>
         <About />
         <SkillsGrid />
         <Experience />
