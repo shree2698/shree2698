@@ -19,31 +19,31 @@
   /* You can add sidebar, border, ring etc if needed */
 }
 
-/* Light mode */
+/* Light mode (GitHub Light) */
 :root {
-  --radius: 0.625rem;
+  --radius: 0.375rem;
   --background: #ffffff;
-  --foreground: #0f172a;
-  --accent: #0ea5e9;
-  --cta: #38bdf8;
-  --code-bg: #f1f5f9;
-  --code-yellow: #b45309;
-  --code-emerald: #059669;
-  --border: #e5e7eb; /* Tailwind slate-200 */
-  --ring: #3b82f6; /* Tailwind blue-500 */
+  --foreground: #1f2328;
+  --accent: #0969da;
+  --cta: #1f883d;
+  --code-bg: #f6f8fa;
+  --code-yellow: #9a6700;
+  --code-emerald: #1a7f37;
+  --border: #d0d7de;
+  --ring: #0969da;
 }
 
-/* Dark mode */
+/* Dark mode (GitHub Dark High Contrast) */
 .dark {
-  --background: #0f172a;
-  --foreground: #f8fafc;
-  --accent: #38bdf8;
-  --cta: #0ea5e9;
-  --code-bg: #1e293b;
-  --code-yellow: #facc15;
-  --code-emerald: #10b981;
-  --border: #475569; /* Tailwind slate-600 */
-  --ring: #38bdf8; /* Tailwind sky-400 */
+  --background: #010409;
+  --foreground: #ffffff;
+  --accent: #58a6ff;
+  --cta: #3fb950;
+  --code-bg: #0d1117;
+  --code-yellow: #e3b341;
+  --code-emerald: #3fb950;
+  --border: #30363d;
+  --ring: #58a6ff;
 }
 
 /* Base styles */

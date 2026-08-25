@@ -101,16 +101,16 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <div className="group relative">
       <Card 
-        className="overflow-hidden border border-border/50 rounded-md bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+        className="overflow-hidden border border-slate-300 dark:border-[#30363d] rounded-md bg-slate-50 dark:bg-[#0d1117] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-accent"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         {/* Status Badge */}
         <div className="absolute top-4 right-4 z-20">
-          <span className={`px-2.5 py-0.5 rounded-md text-xs font-semibold font-mono ${
-            project.status === 'Live' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200' :
-            project.status === 'In Progress' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' :
-            'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+          <span className={`px-2.5 py-0.5 rounded-md text-xs font-semibold font-mono border ${
+            project.status === 'Live' ? 'bg-emerald-500/10 text-[#3fb950] border-[#238636]' :
+            project.status === 'In Progress' ? 'bg-amber-500/10 text-amber-400 border-amber-500/40' :
+            'bg-blue-500/10 text-sky-400 border-sky-500/40'
           }`}>
             {project.status}
           </span>
@@ -127,20 +127,20 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 
                 {/* Floating Icon */}
                 <div className="absolute top-4 left-4">
                   <div className={`w-12 h-12 rounded-md bg-gradient-to-br ${project.color} p-0.5 shadow-md`}>
-                    <div className="w-full h-full bg-white dark:bg-slate-800 rounded-sm flex items-center justify-center">
-                      <IconComponent className="w-6 h-6 text-slate-700 dark:text-slate-300" />
+                    <div className="w-full h-full bg-white dark:bg-[#161b22] rounded-sm flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 text-accent" />
                     </div>
                   </div>
                 </div>
 
                 {/* Project Number */}
                 <div className="absolute bottom-4 left-4">
-                  <span className="text-5xl font-black text-white/20 font-mono">0{project.id}</span>
+                  <span className="text-5xl font-black text-white/30 font-mono">0{project.id}</span>
                 </div>
               </div>
             </div>
@@ -157,33 +157,33 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 {project.title}
               </h3>
 
-              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4 font-sans">
+              <p className="text-sm text-foreground/80 leading-relaxed mb-4 font-sans">
                 {project.description}
               </p>
 
               {/* Project Info */}
               <div className="grid grid-cols-2 gap-3 mb-4 text-xs font-mono">
-                <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
-                  <Calendar className="w-3.5 h-3.5" />
+                <div className="flex items-center gap-1.5 text-foreground/70">
+                  <Calendar className="w-3.5 h-3.5 text-accent" />
                   <span>{project.duration}</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
-                  <Users className="w-3.5 h-3.5" />
+                <div className="flex items-center gap-1.5 text-foreground/70">
+                  <Users className="w-3.5 h-3.5 text-accent" />
                   <span>{project.teamSize}</span>
                 </div>
               </div>
 
               {/* Features */}
               <div className="mb-4">
-                <h4 className="text-xs font-semibold text-slate-600 dark:text-slate-400 mb-2 flex items-center gap-1.5 font-display">
-                  <Zap className="w-3.5 h-3.5" />
+                <h4 className="text-xs font-semibold text-foreground/90 mb-2 flex items-center gap-1.5 font-display">
+                  <Zap className="w-3.5 h-3.5 text-accent" />
                   Key Features
                 </h4>
                 <div className="grid grid-cols-2 gap-1.5 font-sans">
                   {project.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 bg-accent rounded-sm" />
-                      <span className="text-xs text-slate-600 dark:text-slate-400">{feature}</span>
+                      <div className="w-1.5 h-1.5 bg-[#3fb950] rounded-sm" />
+                      <span className="text-xs text-foreground/80">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -191,15 +191,15 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
               {/* Technologies */}
               <div className="mb-5">
-                <h4 className="text-xs font-semibold text-slate-600 dark:text-slate-400 mb-2 flex items-center gap-1.5 font-display">
-                  <Code className="w-3.5 h-3.5" />
+                <h4 className="text-xs font-semibold text-foreground/90 mb-2 flex items-center gap-1.5 font-display">
+                  <Code className="w-3.5 h-3.5 text-accent" />
                   Technologies
                 </h4>
                 <div className="flex flex-wrap gap-1.5 font-mono">
                   {project.technologies.map((tech, idx) => (
                     <span
                       key={idx}
-                      className="px-2.5 py-0.5 bg-accent/10 text-accent rounded-md text-xs font-medium border border-accent/20 hover:bg-accent/20 transition-colors"
+                      className="px-2.5 py-0.5 bg-slate-100 dark:bg-[#161b22] text-accent rounded-md text-xs font-medium border border-slate-300 dark:border-[#30363d] hover:bg-accent/20 transition-colors"
                     >
                       {tech}
                     </span>
@@ -214,7 +214,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-accent to-cta text-white rounded-md text-xs font-semibold hover:shadow-md transition-all duration-200"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#238636] hover:bg-[#2ea043] dark:bg-[#238636] dark:hover:bg-[#2ea043] border border-[#2ea043]/60 text-white rounded-md text-xs font-semibold hover:shadow-md transition-all duration-200"
                   >
                     <Globe className="w-3.5 h-3.5" />
                     Live Demo
@@ -225,7 +225,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 border border-accent text-accent rounded-md text-xs font-semibold hover:bg-accent hover:text-white transition-all duration-200"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] text-foreground hover:border-accent hover:text-accent rounded-md text-xs font-semibold transition-all duration-200"
                   >
                     <Github className="w-3.5 h-3.5" />
                     Code
@@ -233,7 +233,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 )}
                 <button 
                   onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                  className="inline-flex items-center gap-1 px-3 py-2 text-accent hover:text-cta transition-colors text-xs font-medium group cursor-pointer"
+                  className="inline-flex items-center gap-1 px-3 py-2 text-accent hover:text-sky-400 transition-colors text-xs font-medium group cursor-pointer"
                 >
                   Contact Me
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -274,22 +274,22 @@ export default function Projects() {
             </h2>
             <div className="h-1 bg-gradient-to-r from-accent to-cta rounded-full w-20 mx-auto" />
           </div>
-          <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 mt-3 max-w-2xl mx-auto font-sans">
+          <p className="text-sm md:text-base text-foreground/80 mt-3 max-w-2xl mx-auto font-sans">
             Showcasing innovative solutions and cutting-edge technologies that solve real-world problems
           </p>
         </div>
 
         {/* Filter Tabs */}
         <div className="flex justify-center mb-8 font-mono">
-          <div className="flex flex-wrap justify-center bg-slate-100 dark:bg-slate-800 rounded-md p-1 gap-1 max-w-full">
+          <div className="flex flex-wrap justify-center bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md p-1 gap-1 max-w-full">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setFilter(category)}
                 className={`px-3.5 py-1.5 rounded-md text-xs font-semibold transition-all duration-200 cursor-pointer ${
                   filter === category
-                    ? 'bg-gradient-to-r from-accent to-cta text-white shadow-sm'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-accent'
+                    ? 'bg-[#238636] border border-[#2ea043] text-white shadow-sm'
+                    : 'text-foreground/70 hover:text-accent hover:bg-slate-200 dark:hover:bg-[#21262d]'
                 }`}
               >
                 {category}
@@ -307,16 +307,16 @@ export default function Projects() {
 
         {/* CTA Section */}
         <div className="text-center mt-12">
-          <div className="bg-gradient-to-r from-accent/10 to-cta/10 rounded-md p-6 md:p-8 border border-accent/20 max-w-3xl mx-auto">
+          <div className="bg-slate-50 dark:bg-[#0d1117] rounded-md p-6 md:p-8 border border-slate-300 dark:border-[#30363d] max-w-3xl mx-auto">
             <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2 font-display">
               Ready to bring your ideas to life?
             </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mb-5 max-w-xl mx-auto font-sans">
+            <p className="text-sm text-foreground/80 mb-5 max-w-xl mx-auto font-sans">
               Let's collaborate on your next project and create something amazing together.
             </p>
             <button 
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-6 py-2.5 bg-gradient-to-r from-accent to-cta text-white rounded-md font-semibold hover:shadow-md transition-all duration-200 cursor-pointer text-sm font-sans"
+              className="px-6 py-2.5 bg-[#238636] hover:bg-[#2ea043] dark:bg-[#238636] dark:hover:bg-[#2ea043] border border-[#2ea043]/60 text-white rounded-md font-semibold hover:shadow-md transition-all duration-200 cursor-pointer text-sm font-sans"
             >
               Start a Project
             </button>

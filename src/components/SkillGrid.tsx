@@ -170,7 +170,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index }) => {
         animation: `fadeInUp 0.5s ease-out both`
       }}
     >
-      <Card className="relative h-full bg-background border border-border hover:border-accent/50 transition-all duration-300 overflow-hidden rounded-md group-hover:-translate-y-1 group-hover:shadow-md">
+      <Card className="relative h-full bg-slate-50 dark:bg-[#0d1117] border border-slate-300 dark:border-[#30363d] hover:border-accent dark:hover:border-accent transition-all duration-300 overflow-hidden rounded-md group-hover:-translate-y-1 group-hover:shadow-md">
         
         {/* Animated Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-cta/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -190,7 +190,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index }) => {
           </h3>
 
           {/* Category Badge */}
-          <span className="inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-accent/10 text-accent border border-accent/20 rounded-md font-mono">
+          <span className="inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-slate-100 dark:bg-[#161b22] text-accent border border-slate-300 dark:border-[#30363d] rounded-md font-mono">
             {skill.category}
           </span>
 
@@ -198,7 +198,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index }) => {
           <div className={`transition-all duration-300 overflow-hidden ${
             isHovered ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
           }`}>
-            <p className="text-xs text-foreground/70 leading-relaxed px-1 font-sans">
+            <p className="text-xs text-foreground/80 leading-relaxed px-1 font-sans">
               {skill.description}
             </p>
           </div>
@@ -206,10 +206,10 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index }) => {
           {/* Proficiency Bar */}
           <div className="w-full space-y-1.5 font-mono">
             <div className="flex justify-between items-center">
-              <span className="text-[11px] text-foreground/60">Proficiency</span>
+              <span className="text-[11px] text-foreground/70">Proficiency</span>
               <span className="text-[11px] font-medium text-accent">{skill.proficiency}%</span>
             </div>
-            <div className="w-full h-1 bg-border rounded-sm overflow-hidden">
+            <div className="w-full h-1 bg-slate-200 dark:bg-[#30363d] rounded-sm overflow-hidden">
               <div 
                 className="h-full bg-gradient-to-r from-accent to-cta rounded-sm transition-all duration-700 ease-out"
                 style={{ 
@@ -255,9 +255,9 @@ const SkillsGrid: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center mb-10 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/10 border border-accent/20 rounded-md font-mono">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md font-mono">
             <Layers className="w-4 h-4 text-accent" />
-            <span className="text-xs font-medium text-foreground/80">Technical Expertise</span>
+            <span className="text-xs font-medium text-foreground">Technical Expertise</span>
           </div>
           
           <div className="space-y-2">
@@ -268,7 +268,7 @@ const SkillsGrid: React.FC = () => {
               </span>
             </h2>
             
-            <p className="text-sm md:text-base text-foreground/70 max-w-2xl mx-auto leading-relaxed font-sans">
+            <p className="text-sm md:text-base text-foreground/80 max-w-2xl mx-auto leading-relaxed font-sans">
               Full-Stack development, modern databases, and state-of-the-art AI Agent architecture
             </p>
           </div>
@@ -281,8 +281,8 @@ const SkillsGrid: React.FC = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-3.5 py-1.5 rounded-md text-xs font-semibold transition-all duration-200 cursor-pointer ${
                   selectedCategory === category
-                    ? "bg-gradient-to-r from-accent to-cta text-white shadow-sm scale-105"
-                    : "bg-background/80 border border-border text-foreground/70 hover:bg-accent/10 hover:border-accent/30 hover:text-accent"
+                    ? "bg-[#238636] border border-[#2ea043] text-white shadow-sm scale-105"
+                    : "bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] text-foreground/80 hover:border-accent hover:text-accent"
                 }`}
               >
                 {category}

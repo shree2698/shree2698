@@ -39,13 +39,13 @@ export default function GitHubStats() {
             rel="noopener noreferrer"
             className="group"
           >
-            <Card className="border border-border/50 rounded-md bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800/80 dark:to-slate-900/80 hover:border-accent/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+            <Card className="border border-slate-300 dark:border-[#30363d] rounded-md bg-slate-50 dark:bg-[#0d1117] hover:border-accent transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
               <CardContent className="p-3.5 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center text-accent group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-md bg-accent/10 dark:bg-[#161b22] border border-transparent dark:border-[#30363d] flex items-center justify-center text-accent group-hover:scale-105 transition-transform">
                   <Star className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-medium text-foreground/60 font-mono">GitHub Repos</h4>
+                  <h4 className="text-xs font-medium text-foreground/70 font-mono">GitHub Repos</h4>
                   <p className="text-lg font-bold text-foreground font-display">Active</p>
                 </div>
               </CardContent>
@@ -58,13 +58,13 @@ export default function GitHubStats() {
             rel="noopener noreferrer"
             className="group"
           >
-            <Card className="border border-border/50 rounded-md bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800/80 dark:to-slate-900/80 hover:border-amber-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+            <Card className="border border-slate-300 dark:border-[#30363d] rounded-md bg-slate-50 dark:bg-[#0d1117] hover:border-amber-500/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
               <CardContent className="p-3.5 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-md bg-amber-500/10 flex items-center justify-center text-amber-500 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-md bg-amber-500/10 dark:bg-[#161b22] border border-transparent dark:border-[#30363d] flex items-center justify-center text-amber-500 group-hover:scale-105 transition-transform">
                   <Trophy className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-medium text-foreground/60 font-mono">LeetCode Profile</h4>
+                  <h4 className="text-xs font-medium text-foreground/70 font-mono">LeetCode Profile</h4>
                   <p className="text-lg font-bold text-foreground font-display">Problem Solver</p>
                 </div>
               </CardContent>
@@ -72,13 +72,13 @@ export default function GitHubStats() {
           </a>
 
           <div className="group">
-            <Card className="border border-border/50 rounded-md bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800/80 dark:to-slate-900/80">
+            <Card className="border border-slate-300 dark:border-[#30363d] rounded-md bg-slate-50 dark:bg-[#0d1117]">
               <CardContent className="p-3.5 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-md bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+                <div className="w-10 h-10 rounded-md bg-emerald-500/10 dark:bg-[#161b22] border border-transparent dark:border-[#30363d] flex items-center justify-center text-[#3fb950]">
                   <Code2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-medium text-foreground/60 font-mono">Core Expertise</h4>
+                  <h4 className="text-xs font-medium text-foreground/70 font-mono">Core Expertise</h4>
                   <p className="text-lg font-bold text-foreground font-display">Full Stack & AI</p>
                 </div>
               </CardContent>
@@ -86,13 +86,13 @@ export default function GitHubStats() {
           </div>
 
           <div className="group">
-            <Card className="border border-border/50 rounded-md bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800/80 dark:to-slate-900/80">
+            <Card className="border border-slate-300 dark:border-[#30363d] rounded-md bg-slate-50 dark:bg-[#0d1117]">
               <CardContent className="p-3.5 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-md bg-purple-500/10 flex items-center justify-center text-purple-500">
+                <div className="w-10 h-10 rounded-md bg-purple-500/10 dark:bg-[#161b22] border border-transparent dark:border-[#30363d] flex items-center justify-center text-purple-400">
                   <Flame className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-medium text-foreground/60 font-mono">Architecture</h4>
+                  <h4 className="text-xs font-medium text-foreground/70 font-mono">Architecture</h4>
                   <p className="text-lg font-bold text-foreground font-display">Agentic SDLC</p>
                 </div>
               </CardContent>
@@ -101,21 +101,21 @@ export default function GitHubStats() {
         </div>
 
         {/* Stats Embed Card */}
-        <Card className="border border-border/50 bg-gradient-to-br from-slate-50/90 to-slate-100/90 dark:from-slate-800/90 dark:to-slate-900/90 backdrop-blur-md shadow-lg rounded-md p-4 sm:p-6 max-w-4xl mx-auto">
+        <Card className="border border-slate-300 dark:border-[#30363d] bg-slate-50 dark:bg-[#0d1117] backdrop-blur-md shadow-lg rounded-md p-4 sm:p-6 max-w-4xl mx-auto">
           <div className="space-y-6">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 border-b border-border/30">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 border-b border-slate-200 dark:border-[#30363d]">
               <div>
                 <h3 className="text-base font-bold text-foreground flex items-center gap-2 font-display">
                   <GitBranch className="w-4 h-4 text-accent" />
                   GitHub Contribution Activity
                 </h3>
-                <p className="text-[11px] text-foreground/60 font-mono">Live metrics from @shree2698 on GitHub</p>
+                <p className="text-[11px] text-foreground/70 font-mono">Live metrics from @shree2698 on GitHub</p>
               </div>
               <a
                 href="https://github.com/shree2698"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-accent/10 text-accent hover:bg-accent hover:text-white text-xs font-semibold transition-all font-mono"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-100 dark:bg-[#161b22] text-accent hover:bg-accent hover:text-white border border-slate-300 dark:border-[#30363d] text-xs font-semibold transition-all font-mono"
               >
                 <span>View GitHub Profile</span>
                 <ExternalLink className="w-3.5 h-3.5" />

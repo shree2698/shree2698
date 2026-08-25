@@ -54,17 +54,17 @@ const experiences: ExperienceItem[] = [
 
 function ExperienceCardItem({ experience, index }: { experience: ExperienceItem; index: number }) {
   return (
-    <Card className="group relative overflow-hidden border border-border/50 rounded-md bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+    <Card className="group relative overflow-hidden border border-slate-300 dark:border-[#30363d] rounded-md bg-slate-50 dark:bg-[#0d1117] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-accent">
       <CardContent className="relative p-5">
         {/* Header */}
         <div className="flex items-start gap-3.5 mb-4">
           <div className="relative">
             <div className="w-12 h-12 rounded-md bg-gradient-to-br from-accent to-cta p-2 shadow-md">
-              <div className="w-full h-full bg-white dark:bg-slate-800 rounded-sm flex items-center justify-center">
+              <div className="w-full h-full bg-white dark:bg-[#161b22] rounded-sm flex items-center justify-center">
                 <Code className="w-5 h-5 text-accent" />
               </div>
             </div>
-            <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full animate-pulse" />
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#3fb950] rounded-full animate-pulse" />
           </div>
           
           <div className="flex-1">
@@ -73,7 +73,7 @@ function ExperienceCardItem({ experience, index }: { experience: ExperienceItem;
             </h3>
             <p className="text-accent font-semibold text-sm font-sans">{experience.company}</p>
             
-            <div className="flex items-center gap-3 mt-1.5 text-xs text-slate-600 dark:text-slate-400 font-mono">
+            <div className="flex items-center gap-3 mt-1.5 text-xs text-foreground/70 font-mono">
               <div className="flex items-center gap-1">
                 <Calendar className="w-3.5 h-3.5" />
                 <span>{experience.date}</span>
@@ -87,21 +87,21 @@ function ExperienceCardItem({ experience, index }: { experience: ExperienceItem;
         </div>
 
         {/* Description */}
-        <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed mb-4 font-sans">
+        <p className="text-sm text-foreground/80 leading-relaxed mb-4 font-sans">
           {experience.description}
         </p>
 
         {/* Highlights */}
         <div className="mb-4 font-sans">
-          <h4 className="text-xs font-semibold text-slate-600 dark:text-slate-400 mb-2 flex items-center gap-1.5 font-display">
-            <Zap className="w-3.5 h-3.5" />
+          <h4 className="text-xs font-semibold text-foreground/90 mb-2 flex items-center gap-1.5 font-display">
+            <Zap className="w-3.5 h-3.5 text-accent" />
             Key Achievements
           </h4>
           <div className="space-y-1">
             {experience.highlights.map((highlight, idx) => (
               <div key={idx} className="flex items-center gap-2 font-sans">
-                <div className="w-1.5 h-1.5 bg-accent rounded-sm" />
-                <span className="text-xs text-slate-600 dark:text-slate-400">{highlight}</span>
+                <div className="w-1.5 h-1.5 bg-[#3fb950] rounded-sm" />
+                <span className="text-xs text-foreground/80">{highlight}</span>
               </div>
             ))}
           </div>
@@ -109,15 +109,15 @@ function ExperienceCardItem({ experience, index }: { experience: ExperienceItem;
 
         {/* Skills */}
         <div>
-          <h4 className="text-xs font-semibold text-slate-600 dark:text-slate-400 mb-2 flex items-center gap-1.5 font-display">
-            <Users className="w-3.5 h-3.5" />
+          <h4 className="text-xs font-semibold text-foreground/90 mb-2 flex items-center gap-1.5 font-display">
+            <Users className="w-3.5 h-3.5 text-accent" />
             Technologies
           </h4>
           <div className="flex flex-wrap gap-1.5 font-mono">
             {experience.skills.map((skill, idx) => (
               <span
                 key={idx}
-                className="px-2.5 py-0.5 bg-accent/10 text-accent rounded-md text-xs font-medium border border-accent/20 hover:bg-accent/20 transition-colors"
+                className="px-2.5 py-0.5 bg-slate-100 dark:bg-[#161b22] text-accent rounded-md text-xs font-medium border border-slate-300 dark:border-[#30363d] hover:bg-accent/20 transition-colors"
               >
                 {skill}
               </span>
@@ -154,7 +154,7 @@ export default function Experience() {
             </h2>
             <div className="h-1 bg-gradient-to-r from-accent to-cta rounded-full w-20 mx-auto" />
           </div>
-          <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 mt-3 max-w-2xl mx-auto font-sans">
+          <p className="text-sm md:text-base text-foreground/80 mt-3 max-w-2xl mx-auto font-sans">
             Crafting digital experiences and building scalable solutions with modern technologies
           </p>
         </div>
@@ -172,17 +172,17 @@ export default function Experience() {
 
         {/* Stats Section */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
-          <div className="text-center p-4 bg-background/50 border border-border rounded-md">
+          <div className="text-center p-4 bg-slate-50 dark:bg-[#0d1117] border border-slate-300 dark:border-[#30363d] rounded-md">
             <div className="text-2xl font-bold text-accent mb-1 font-display">2.5+</div>
-            <div className="text-xs text-slate-600 dark:text-slate-400 font-mono">Years Experience</div>
+            <div className="text-xs text-foreground/70 font-mono">Years Experience</div>
           </div>
-          <div className="text-center p-4 bg-background/50 border border-border rounded-md">
-            <div className="text-2xl font-bold text-cta mb-1 font-display">15+</div>
-            <div className="text-xs text-slate-600 dark:text-slate-400 font-mono">Projects Completed</div>
+          <div className="text-center p-4 bg-slate-50 dark:bg-[#0d1117] border border-slate-300 dark:border-[#30363d] rounded-md">
+            <div className="text-2xl font-bold text-[#3fb950] mb-1 font-display">15+</div>
+            <div className="text-xs text-foreground/70 font-mono">Projects Completed</div>
           </div>
-          <div className="text-center p-4 bg-background/50 border border-border rounded-md">
-            <div className="text-2xl font-bold text-emerald-500 mb-1 font-display">10+</div>
-            <div className="text-xs text-slate-600 dark:text-slate-400 font-mono">Technologies Mastered</div>
+          <div className="text-center p-4 bg-slate-50 dark:bg-[#0d1117] border border-slate-300 dark:border-[#30363d] rounded-md">
+            <div className="text-2xl font-bold text-sky-400 mb-1 font-display">10+</div>
+            <div className="text-xs text-foreground/70 font-mono">Technologies Mastered</div>
           </div>
         </div>
       </div>
