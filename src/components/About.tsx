@@ -17,6 +17,12 @@ import {
   CheckCircle
 } from "lucide-react";
 
+import { BlurText } from "@/components/reactbits/BlurText";
+import { DecryptedText } from "@/components/reactbits/DecryptedText";
+import { SpotlightCard } from "@/components/reactbits/SpotlightCard";
+import { ShinyText } from "@/components/reactbits/ShinyText";
+import { AnimatedContent } from "@/components/reactbits/AnimatedContent";
+
 interface Stat {
   value: string;
   label: string;
@@ -73,26 +79,34 @@ const About: React.FC = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/10 border border-accent/20 rounded-md mb-3 font-mono">
+        <AnimatedContent distance={25} direction="vertical" className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md mb-3 font-mono">
             <Users className="w-4 h-4 text-accent" />
-            <span className="text-xs font-medium text-foreground/80">Get to know me</span>
+            <span className="text-xs font-medium text-foreground">
+              <DecryptedText text="Get to know me" animateOn="hover" speed={30} />
+            </span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-2 font-display">
-            About <span className="bg-gradient-to-r from-accent to-cta bg-clip-text text-transparent">Me</span>
+            About{" "}
+            <BlurText 
+              text="Me" 
+              className="bg-gradient-to-r from-accent to-cta bg-clip-text text-transparent"
+              animateBy="words" 
+              delay={60} 
+            />
           </h2>
-          <p className="text-base text-foreground/70 max-w-2xl mx-auto font-sans">
+          <p className="text-base text-foreground/80 max-w-2xl mx-auto font-sans">
             Passionate full-stack developer crafting innovative solutions with modern technologies
           </p>
-        </div>
+        </AnimatedContent>
 
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           {/* Content Section */}
-          <div className="space-y-6">
+          <AnimatedContent distance={30} direction="horizontal" delay={100} className="space-y-6">
             {/* Story */}
             <div className="space-y-4 font-sans">
-              <div className="p-4 bg-slate-50 dark:bg-[#0d1117] backdrop-blur-sm border border-slate-300 dark:border-[#30363d] rounded-md">
-                <div className="flex items-start gap-3 mb-2">
+              <SpotlightCard className="p-4" spotlightColor="rgba(88, 166, 255, 0.12)">
+                <div className="flex items-start gap-3">
                   <div className="p-2 bg-accent/10 dark:bg-[#161b22] border border-transparent dark:border-[#30363d] rounded-md">
                     <Code2 className="w-4 h-4 text-accent" />
                   </div>
@@ -104,10 +118,10 @@ const About: React.FC = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </SpotlightCard>
 
-              <div className="p-4 bg-slate-50 dark:bg-[#0d1117] backdrop-blur-sm border border-slate-300 dark:border-[#30363d] rounded-md">
-                <div className="flex items-start gap-3 mb-2">
+              <SpotlightCard className="p-4" spotlightColor="rgba(63, 185, 80, 0.12)">
+                <div className="flex items-start gap-3">
                   <div className="p-2 bg-emerald-500/10 dark:bg-[#161b22] border border-transparent dark:border-[#30363d] rounded-md">
                     <Globe className="w-4 h-4 text-[#3fb950]" />
                   </div>
@@ -118,10 +132,10 @@ const About: React.FC = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </SpotlightCard>
 
-              <div className="p-4 bg-slate-50 dark:bg-[#0d1117] backdrop-blur-sm border border-slate-300 dark:border-[#30363d] rounded-md">
-                <div className="flex items-start gap-3 mb-2">
+              <SpotlightCard className="p-4" spotlightColor="rgba(88, 166, 255, 0.12)">
+                <div className="flex items-start gap-3">
                   <div className="p-2 bg-accent/10 dark:bg-[#161b22] border border-transparent dark:border-[#30363d] rounded-md">
                     <Lightbulb className="w-4 h-4 text-accent" />
                   </div>
@@ -132,7 +146,7 @@ const About: React.FC = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </SpotlightCard>
             </div>
 
             {/* Core Values */}
@@ -159,13 +173,13 @@ const About: React.FC = () => {
               onClick={handleContactScroll}
               className="group bg-[#238636] hover:bg-[#2ea043] dark:bg-[#238636] dark:hover:bg-[#2ea043] border border-[#2ea043]/60 text-white shadow-md hover:shadow-lg transition-all duration-300 px-5 py-2.5 rounded-md cursor-pointer text-sm font-semibold font-sans"
             >
-              Let's Work Together
+              <ShinyText text="Let's Work Together" speed={3.5} />
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
-          </div>
+          </AnimatedContent>
 
           {/* Image & Stats Section */}
-          <div className="space-y-6">
+          <AnimatedContent distance={30} direction="horizontal" reverse={true} delay={200} className="space-y-6">
             {/* Main Image */}
             <div className="relative">
               <div className="relative aspect-square max-w-sm mx-auto">
@@ -197,9 +211,10 @@ const About: React.FC = () => {
             {/* Stats Grid */}
             <div className="grid grid-cols-2 gap-3">
               {stats.map((stat, index) => (
-                <div
+                <SpotlightCard
                   key={index}
-                  className="p-3 bg-slate-50 dark:bg-[#0d1117] backdrop-blur-sm border border-slate-300 dark:border-[#30363d] rounded-md text-center hover:border-accent transition-colors group"
+                  className="p-3 text-center"
+                  spotlightColor="rgba(88, 166, 255, 0.15)"
                 >
                   <div className="flex justify-center mb-1.5">
                     <div className="p-1.5 bg-accent/10 dark:bg-[#161b22] rounded-md border border-transparent dark:border-[#30363d] group-hover:bg-accent/20 transition-colors">
@@ -208,7 +223,7 @@ const About: React.FC = () => {
                   </div>
                   <div className="text-xl font-bold text-foreground mb-0.5 font-display">{stat.value}</div>
                   <div className="text-xs text-foreground/70 font-mono">{stat.label}</div>
-                </div>
+                </SpotlightCard>
               ))}
             </div>
 
@@ -220,14 +235,13 @@ const About: React.FC = () => {
                   <span
                     key={index}
                     className="px-2.5 py-0.5 bg-slate-100/80 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md text-xs font-medium text-foreground hover:border-accent hover:text-accent transition-all duration-200"
-                    style={{ animationDelay: `${index * 100}ms` }}
                   >
                     {skill.name}
                   </span>
                 ))}
               </div>
             </div>
-          </div>
+          </AnimatedContent>
         </div>
       </div>
     </section>

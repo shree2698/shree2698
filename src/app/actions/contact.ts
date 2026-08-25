@@ -1,10 +1,12 @@
-﻿"use server";
+"use server";
 
-interface ContactState {
+export interface ContactState {
   success: boolean;
   message: string;
   errors?: Record<string, string[]>;
 }
+
+export type ContactFormState = ContactState;
 
 export async function sendContactMessage(
   prevState: ContactState | null,

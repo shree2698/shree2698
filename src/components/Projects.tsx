@@ -2,8 +2,14 @@
 
 import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
-import { ExternalLink, Github, Code, Users, Calendar, ArrowRight, Zap, Database, Globe, Bot, Layout, ShieldCheck, Sparkles } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { ExternalLink, Github, Code, Users, Calendar, ArrowRight, Zap, Database, Globe, Bot, Layout, ShieldCheck, Sparkles, FolderGit2 } from "lucide-react";
+import { CardContent } from "@/components/ui/card";
+import { BlurText } from "@/components/reactbits/BlurText";
+import { DecryptedText } from "@/components/reactbits/DecryptedText";
+import { SpotlightCard } from "@/components/reactbits/SpotlightCard";
+import { Magnet } from "@/components/reactbits/Magnet";
+import { ShinyText } from "@/components/reactbits/ShinyText";
+import { AnimatedContent } from "@/components/reactbits/AnimatedContent";
 
 import crm from "@/assets/images/crm.jpg";
 import mail from "@/assets/images/bullkmail.jpg";
@@ -49,49 +55,49 @@ const projects: Project[] = [
     title: "QuickDesk AI Support",
     description: "AI-powered customer support and help desk platform with automated ticket routing, semantic search with RAG knowledge embeddings, multi-tenant dashboard, and real-time response analytics.",
     imgSrc: mail,
-    category: "AI & SaaS Platforms",
-    technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "AI Embeddings", "TailwindCSS"],
-    features: ["Automated Ticket Triage", "RAG Knowledge Search", "Real-time Metrics", "Multi-tenant Architecture"],
-    status: "Completed",
-    duration: "4 months",
+    category: "AI & SaaS Applications",
+    technologies: ["Next.js", "React", "Node.js", "LangChain", "OpenAI", "PostgreSQL", "Prisma", "Tailwind CSS"],
+    features: ["Autonomous AI Triage", "RAG Knowledge Base", "Multi-Tenant Workspaces", "Live Analytics"],
+    status: "Live",
+    duration: "Production",
     teamSize: "Full Stack Lead",
     icon: Sparkles,
-    color: "from-purple-500 to-pink-500",
-    demoUrl: "https://github.com/shree2698/quickdesk",
-    githubUrl: "https://github.com/shree2698/quickdesk"
+    color: "from-purple-500 to-pink-600",
+    demoUrl: "https://github.com/shree2698/QuickDesk",
+    githubUrl: "https://github.com/shree2698/QuickDesk"
   },
   {
     id: 3,
-    title: "LifeSync Productivity Suite",
-    description: "Comprehensive personal productivity and wellness suite unifying habit tracking, financial budget analytics, dynamic calendar reminders, and automated daily routines into an intuitive interface.",
+    title: "OmniCRM Enterprise",
+    description: "Full-featured Enterprise CRM platform with deal pipeline tracking, automated email dispatching, role-based access control (RBAC), and customer interaction logs.",
     imgSrc: pms,
-    category: "Full Stack Applications",
-    technologies: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "TailwindCSS"],
-    features: ["Habit Tracking", "Budget Analytics", "Daily Routine Planner", "Interactive Visualizations"],
-    status: "Completed",
-    duration: "3 months",
-    teamSize: "Independent Developer",
+    category: "Enterprise Web Apps",
+    technologies: ["React", "TypeScript", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Redis"],
+    features: ["Interactive Kanban Pipeline", "Automated Email Sequences", "Granular RBAC", "Audit Trails"],
+    status: "Live",
+    duration: "Enterprise",
+    teamSize: "Core Engineer",
     icon: Layout,
-    color: "from-emerald-500 to-teal-500",
-    demoUrl: "https://github.com/shree2698/LifeSync",
-    githubUrl: "https://github.com/shree2698/LifeSync"
+    color: "from-emerald-500 to-teal-600",
+    demoUrl: "https://github.com/shree2698/crm-frontend",
+    githubUrl: "https://github.com/shree2698/crm-frontend"
   },
   {
     id: 4,
-    title: "Souree Tech Agency Portal",
-    description: "Modern digital transformation agency portal showcasing enterprise AI solutions, interactive case studies, responsive micro-animations, and fast edge-optimized static rendering.",
+    title: "ICAR Agricultural ERP",
+    description: "Large-scale institutional ERP portal for agricultural research data collection, personnel directory, publication index, and secure reporting pipelines.",
     imgSrc: icar,
-    category: "Web & Digital Experience",
-    technologies: ["Next.js", "TailwindCSS", "Framer Motion", "TypeScript", "Vercel"],
-    features: ["Edge Rendering", "Interactive Animations", "Enterprise Showcase", "SEO Optimized"],
-    status: "Live",
-    duration: "2 months",
-    teamSize: "Frontend Specialist",
-    icon: Globe,
-    color: "from-amber-500 to-orange-500",
-    demoUrl: "https://tanushree-portfolio-five.vercel.app",
+    category: "Full Stack & Microservices",
+    technologies: ["React", "Next.js", "NestJS", "PostgreSQL", "Tailwind CSS", "Docker"],
+    features: ["Institutional Data Capture", "Research Cataloging", "Export Engine (PDF/Excel)", "Fast Search"],
+    status: "Completed",
+    duration: "Enterprise",
+    teamSize: "Frontend & API Dev",
+    icon: Database,
+    color: "from-amber-500 to-orange-600",
+    demoUrl: "https://icar-ciwa.org.in/",
     githubUrl: "https://github.com/shree2698"
-  },
+  }
 ];
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -100,8 +106,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
   return (
     <div className="group relative">
-      <Card 
-        className="overflow-hidden border border-slate-300 dark:border-[#30363d] rounded-md bg-slate-50 dark:bg-[#0d1117] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-accent"
+      <SpotlightCard 
+        className="overflow-hidden transition-all duration-300 hover:-translate-y-1"
+        spotlightColor="rgba(88, 166, 255, 0.15)"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -210,26 +217,30 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-2.5 font-sans">
                 {project.demoUrl && (
-                  <a
-                    href={project.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#238636] hover:bg-[#2ea043] dark:bg-[#238636] dark:hover:bg-[#2ea043] border border-[#2ea043]/60 text-white rounded-md text-xs font-semibold hover:shadow-md transition-all duration-200"
-                  >
-                    <Globe className="w-3.5 h-3.5" />
-                    Live Demo
-                  </a>
+                  <Magnet magnetStrength={3} padding={20}>
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#238636] hover:bg-[#2ea043] dark:bg-[#238636] dark:hover:bg-[#2ea043] border border-[#2ea043]/60 text-white rounded-md text-xs font-semibold hover:shadow-md transition-all duration-200"
+                    >
+                      <Globe className="w-3.5 h-3.5" />
+                      <ShinyText text="Live Demo" speed={3} />
+                    </a>
+                  </Magnet>
                 )}
                 {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] text-foreground hover:border-accent hover:text-accent rounded-md text-xs font-semibold transition-all duration-200"
-                  >
-                    <Github className="w-3.5 h-3.5" />
-                    Code
-                  </a>
+                  <Magnet magnetStrength={3} padding={20}>
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] text-foreground hover:border-accent hover:text-accent rounded-md text-xs font-semibold transition-all duration-200"
+                    >
+                      <Github className="w-3.5 h-3.5" />
+                      Code
+                    </a>
+                  </Magnet>
                 )}
                 <button 
                   onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
@@ -242,7 +253,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             </div>
           </div>
         </CardContent>
-      </Card>
+      </SpotlightCard>
     </div>
   );
 }
@@ -264,64 +275,77 @@ export default function Projects() {
       
       <div className="container mx-auto px-4 relative">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-block">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2 font-display">
-              Featured{" "}
-              <span className="bg-gradient-to-r from-accent to-cta bg-clip-text text-transparent">
-                Projects
-              </span>
-            </h2>
-            <div className="h-1 bg-gradient-to-r from-accent to-cta rounded-full w-20 mx-auto" />
+        <AnimatedContent distance={25} direction="vertical" className="text-center mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md mb-3 font-mono">
+            <FolderGit2 className="w-4 h-4 text-accent" />
+            <span className="text-xs font-medium text-foreground">
+              <DecryptedText text="Engineering Portfolio" animateOn="hover" speed={30} />
+            </span>
           </div>
-          <p className="text-sm md:text-base text-foreground/80 mt-3 max-w-2xl mx-auto font-sans">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2 font-display">
+            Featured{" "}
+            <BlurText 
+              text="Projects" 
+              className="bg-gradient-to-r from-accent to-cta bg-clip-text text-transparent"
+              animateBy="words" 
+              delay={60} 
+            />
+          </h2>
+          <p className="text-sm md:text-base text-foreground/80 max-w-2xl mx-auto font-sans">
             Showcasing innovative solutions and cutting-edge technologies that solve real-world problems
           </p>
-        </div>
+        </AnimatedContent>
 
         {/* Filter Tabs */}
-        <div className="flex justify-center mb-8 font-mono">
-          <div className="flex flex-wrap justify-center bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md p-1 gap-1 max-w-full">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setFilter(category)}
-                className={`px-3.5 py-1.5 rounded-md text-xs font-semibold transition-all duration-200 cursor-pointer ${
-                  filter === category
-                    ? 'bg-[#238636] border border-[#2ea043] text-white shadow-sm'
-                    : 'text-foreground/70 hover:text-accent hover:bg-slate-200 dark:hover:bg-[#21262d]'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+        <AnimatedContent distance={20} direction="vertical" delay={100}>
+          <div className="flex justify-center mb-8 font-mono">
+            <div className="flex flex-wrap justify-center bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md p-1 gap-1 max-w-full">
+              {categories.map((category) => (
+                <Magnet key={category} magnetStrength={4} padding={15}>
+                  <button
+                    onClick={() => setFilter(category)}
+                    className={`px-3.5 py-1.5 rounded-md text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                      filter === category
+                        ? 'bg-[#238636] border border-[#2ea043] text-white shadow-sm'
+                        : 'text-foreground/70 hover:text-accent hover:bg-slate-200 dark:hover:bg-[#21262d]'
+                    }`}
+                  >
+                    {category}
+                  </button>
+                </Magnet>
+              ))}
+            </div>
           </div>
-        </div>
+        </AnimatedContent>
 
         {/* Projects Grid */}
         <div className="space-y-6 max-w-6xl mx-auto">
           {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <AnimatedContent key={project.id} distance={35} direction="vertical" delay={index * 100}>
+              <ProjectCard project={project} index={index} />
+            </AnimatedContent>
           ))}
         </div>
 
         {/* CTA Section */}
-        <div className="text-center mt-12">
-          <div className="bg-slate-50 dark:bg-[#0d1117] rounded-md p-6 md:p-8 border border-slate-300 dark:border-[#30363d] max-w-3xl mx-auto">
-            <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2 font-display">
-              Ready to bring your ideas to life?
-            </h3>
-            <p className="text-sm text-foreground/80 mb-5 max-w-xl mx-auto font-sans">
-              Let's collaborate on your next project and create something amazing together.
-            </p>
-            <button 
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-6 py-2.5 bg-[#238636] hover:bg-[#2ea043] dark:bg-[#238636] dark:hover:bg-[#2ea043] border border-[#2ea043]/60 text-white rounded-md font-semibold hover:shadow-md transition-all duration-200 cursor-pointer text-sm font-sans"
-            >
-              Start a Project
-            </button>
+        <AnimatedContent distance={30} direction="vertical" delay={250}>
+          <div className="text-center mt-12">
+            <SpotlightCard className="p-6 md:p-8 max-w-3xl mx-auto" spotlightColor="rgba(63, 185, 80, 0.15)">
+              <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2 font-display">
+                Ready to bring your ideas to life?
+              </h3>
+              <p className="text-sm text-foreground/80 mb-5 max-w-xl mx-auto font-sans">
+                Let's collaborate on your next project and create something amazing together.
+              </p>
+              <button 
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                className="px-6 py-2.5 bg-[#238636] hover:bg-[#2ea043] dark:bg-[#238636] dark:hover:bg-[#2ea043] border border-[#2ea043]/60 text-white rounded-md font-semibold hover:shadow-md transition-all duration-200 cursor-pointer text-sm font-sans"
+              >
+                <ShinyText text="Start a Project" speed={3} />
+              </button>
+            </SpotlightCard>
           </div>
-        </div>
+        </AnimatedContent>
       </div>
     </section>
   );

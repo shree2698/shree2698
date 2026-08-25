@@ -21,6 +21,12 @@ import {
   Sparkles
 } from "lucide-react";
 
+import { BlurText } from "@/components/reactbits/BlurText";
+import { DecryptedText } from "@/components/reactbits/DecryptedText";
+import { SpotlightCard } from "@/components/reactbits/SpotlightCard";
+import { Magnet } from "@/components/reactbits/Magnet";
+import { AnimatedContent } from "@/components/reactbits/AnimatedContent";
+
 type Skill = {
   name: string;
   category: "Frontend" | "Backend" | "Databases" | "AI & Tools";
@@ -160,72 +166,65 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div
-      className="group cursor-pointer transition-all duration-300"
+    <SpotlightCard 
+      className="relative h-full transition-all duration-300 group-hover:-translate-y-1 group cursor-pointer"
+      spotlightColor="rgba(88, 166, 255, 0.18)"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Card className="relative h-full bg-slate-50 dark:bg-[#0d1117] border border-slate-300 dark:border-[#30363d] hover:border-accent dark:hover:border-accent transition-all duration-300 overflow-hidden rounded-md group-hover:-translate-y-1 group-hover:shadow-md">
-        
-        {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-cta/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-        <CardContent className="relative p-4 flex flex-col items-center justify-center text-center space-y-3">
-          
-          {/* Icon Container */}
-          <div className="relative group/icon">
-            <div className="relative p-3 bg-gradient-to-br from-accent to-cta rounded-md group-hover:scale-105 transition-all duration-300 shadow-md">
-              <skill.icon className="w-6 h-6 text-white" />
-            </div>
+      <CardContent className="relative p-4 flex flex-col items-center justify-center text-center space-y-3">
+        {/* Icon Container */}
+        <div className="relative group/icon">
+          <div className="relative p-3 bg-gradient-to-br from-accent to-cta rounded-md group-hover:scale-105 transition-all duration-300 shadow-md">
+            <skill.icon className="w-6 h-6 text-white" />
           </div>
+        </div>
 
-          {/* Skill Name */}
-          <h3 className="text-base font-bold text-foreground group-hover:text-accent transition-colors duration-300 font-display">
-            {skill.name}
-          </h3>
+        {/* Skill Name */}
+        <h3 className="text-base font-bold text-foreground group-hover:text-accent transition-colors duration-300 font-display">
+          {skill.name}
+        </h3>
 
-          {/* Category Badge */}
-          <span className="inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-slate-100 dark:bg-[#161b22] text-accent border border-slate-300 dark:border-[#30363d] rounded-md font-mono">
-            {skill.category}
-          </span>
+        {/* Category Badge */}
+        <span className="inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-slate-100 dark:bg-[#161b22] text-accent border border-slate-300 dark:border-[#30363d] rounded-md font-mono">
+          {skill.category}
+        </span>
 
-          {/* Description - appears on hover */}
-          <div className={`transition-all duration-300 overflow-hidden ${
-            isHovered ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
-          }`}>
-            <p className="text-xs text-foreground/80 leading-relaxed px-1 font-sans">
-              {skill.description}
-            </p>
+        {/* Description - appears on hover */}
+        <div className={`transition-all duration-300 overflow-hidden ${
+          isHovered ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <p className="text-xs text-foreground/80 leading-relaxed px-1 font-sans">
+            {skill.description}
+          </p>
+        </div>
+
+        {/* Proficiency Bar */}
+        <div className="w-full space-y-1.5 font-mono">
+          <div className="flex justify-between items-center">
+            <span className="text-[11px] text-foreground/70">Proficiency</span>
+            <span className="text-[11px] font-medium text-accent">{skill.proficiency}%</span>
           </div>
-
-          {/* Proficiency Bar */}
-          <div className="w-full space-y-1.5 font-mono">
-            <div className="flex justify-between items-center">
-              <span className="text-[11px] text-foreground/70">Proficiency</span>
-              <span className="text-[11px] font-medium text-accent">{skill.proficiency}%</span>
-            </div>
-            <div className="w-full h-1 bg-slate-200 dark:bg-[#30363d] rounded-sm overflow-hidden">
-              <div 
-                className="h-full bg-gradient-to-r from-accent to-cta rounded-sm transition-all duration-700 ease-out"
-                style={{ 
-                  width: isHovered ? `${skill.proficiency}%` : '0%',
-                  transitionDelay: '100ms'
-                }}
-              />
-            </div>
+          <div className="w-full h-1 bg-slate-200 dark:bg-[#30363d] rounded-sm overflow-hidden">
+            <div 
+              className="h-full bg-gradient-to-r from-accent to-cta rounded-sm transition-all duration-700 ease-out"
+              style={{ 
+                width: isHovered ? `${skill.proficiency}%` : '0%',
+                transitionDelay: '100ms'
+              }}
+            />
           </div>
+        </div>
+      </CardContent>
 
-        </CardContent>
-
-        <CardFooter className="pt-0 pb-3 px-4">
-          <div className="w-full flex justify-center">
-            <div className={`w-6 h-0.5 bg-gradient-to-r from-accent to-cta rounded-sm transition-all duration-300 ${
-              isHovered ? 'scale-x-100' : 'scale-x-0'
-            }`} />
-          </div>
-        </CardFooter>
-      </Card>
-    </div>
+      <CardFooter className="pt-0 pb-3 px-4">
+        <div className="w-full flex justify-center">
+          <div className={`w-6 h-0.5 bg-gradient-to-r from-accent to-cta rounded-sm transition-all duration-300 ${
+            isHovered ? 'scale-x-100' : 'scale-x-0'
+          }`} />
+        </div>
+      </CardFooter>
+    </SpotlightCard>
   );
 };
 
@@ -239,7 +238,6 @@ const SkillsGrid: React.FC = () => {
 
   return (
     <section className="relative py-12 bg-background overflow-hidden" id="skills">
-      
       {/* Background Decorations */}
       <div className="absolute inset-0">
         <div className="absolute top-10 left-1/4 w-72 h-72 bg-accent/5 rounded-full blur-3xl animate-pulse" />
@@ -247,20 +245,24 @@ const SkillsGrid: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        
         {/* Section Header */}
-        <div className="text-center mb-10 space-y-3">
+        <AnimatedContent distance={25} direction="vertical" className="text-center mb-10 space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md font-mono">
             <Layers className="w-4 h-4 text-accent" />
-            <span className="text-xs font-medium text-foreground">Technical Expertise</span>
+            <span className="text-xs font-medium text-foreground">
+              <DecryptedText text="Technical Expertise" animateOn="hover" speed={30} />
+            </span>
           </div>
           
           <div className="space-y-2">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display">
               Tech Stack &{' '}
-              <span className="bg-gradient-to-r from-accent to-cta bg-clip-text text-transparent">
-                Skills
-              </span>
+              <BlurText 
+                text="Skills" 
+                className="bg-gradient-to-r from-accent to-cta bg-clip-text text-transparent"
+                animateBy="words" 
+                delay={60} 
+              />
             </h2>
             
             <p className="text-sm md:text-base text-foreground/80 max-w-2xl mx-auto leading-relaxed font-sans">
@@ -271,38 +273,41 @@ const SkillsGrid: React.FC = () => {
           {/* Category Filter Pills */}
           <div className="flex flex-wrap justify-center gap-2 pt-4 font-mono">
             {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-3.5 py-1.5 rounded-md text-xs font-semibold transition-all duration-200 cursor-pointer ${
-                  selectedCategory === category
-                    ? "bg-[#238636] border border-[#2ea043] text-white shadow-sm scale-105"
-                    : "bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] text-foreground/80 hover:border-accent hover:text-accent"
-                }`}
-              >
-                {category}
-              </button>
+              <Magnet key={category} magnetStrength={4} padding={20}>
+                <button
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-3.5 py-1.5 rounded-md text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                    selectedCategory === category
+                      ? "bg-[#238636] border border-[#2ea043] text-white shadow-sm scale-105"
+                      : "bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] text-foreground/80 hover:border-accent hover:text-accent"
+                  }`}
+                >
+                  {category}
+                </button>
+              </Magnet>
             ))}
           </div>
-        </div>
+        </AnimatedContent>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
-          {filteredSkills.map((skill, index) => (
-            <SkillCard key={skill.name} skill={skill} index={index} />
-          ))}
-        </div>
+        <AnimatedContent distance={30} direction="vertical" delay={150}>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
+            {filteredSkills.map((skill, index) => (
+              <SkillCard key={skill.name} skill={skill} index={index} />
+            ))}
+          </div>
+        </AnimatedContent>
 
         {/* Bottom Section */}
-        <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent/10 to-cta/10 border border-accent/20 rounded-md hover:from-accent/20 hover:to-cta/20 transition-all duration-300 cursor-pointer group font-mono">
+        <AnimatedContent distance={20} direction="vertical" delay={250} className="text-center space-y-3">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-[#161b22] border border-slate-300 dark:border-[#30363d] rounded-md hover:border-accent transition-all duration-300 cursor-pointer group font-mono">
             <Code2 className="w-4 h-4 text-accent group-hover:rotate-12 transition-transform duration-300" />
             <span className="text-xs text-foreground/80 group-hover:text-accent transition-colors duration-300 font-medium">
               Always Learning, Always Growing
             </span>
-            <div className="w-1.5 h-1.5 bg-cta rounded-full animate-pulse" />
+            <div className="w-1.5 h-1.5 bg-[#3fb950] rounded-full animate-pulse" />
           </div>
-        </div>
+        </AnimatedContent>
       </div>
     </section>
   );
