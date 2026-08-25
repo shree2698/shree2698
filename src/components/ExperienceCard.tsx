@@ -54,37 +54,32 @@ const experiences: ExperienceItem[] = [
 
 function ExperienceCardItem({ experience, index }: { experience: ExperienceItem; index: number }) {
   return (
-    <Card className="group relative overflow-hidden border-0 bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-      {/* Gradient border effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-accent via-cta to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px] rounded-xl">
-        <div className="h-full w-full bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 rounded-xl" />
-      </div>
-      
-      <CardContent className="relative p-8">
+    <Card className="group relative overflow-hidden border border-border/50 rounded-md bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+      <CardContent className="relative p-5">
         {/* Header */}
-        <div className="flex items-start gap-4 mb-6">
+        <div className="flex items-start gap-3.5 mb-4">
           <div className="relative">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-cta p-3 shadow-lg">
-              <div className="w-full h-full bg-white dark:bg-slate-800 rounded-xl flex items-center justify-center">
-                <Code className="w-6 h-6 text-accent" />
+            <div className="w-12 h-12 rounded-md bg-gradient-to-br from-accent to-cta p-2 shadow-md">
+              <div className="w-full h-full bg-white dark:bg-slate-800 rounded-sm flex items-center justify-center">
+                <Code className="w-5 h-5 text-accent" />
               </div>
             </div>
-            <div className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full animate-pulse" />
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full animate-pulse" />
           </div>
           
           <div className="flex-1">
-            <h3 className="text-xl font-bold text-foreground mb-1 group-hover:text-accent transition-colors">
+            <h3 className="text-lg font-bold text-foreground mb-0.5 group-hover:text-accent transition-colors font-display">
               {experience.title}
             </h3>
-            <p className="text-accent font-semibold text-lg">{experience.company}</p>
+            <p className="text-accent font-semibold text-sm font-sans">{experience.company}</p>
             
-            <div className="flex items-center gap-4 mt-3 text-sm text-slate-600 dark:text-slate-400">
+            <div className="flex items-center gap-3 mt-1.5 text-xs text-slate-600 dark:text-slate-400 font-mono">
               <div className="flex items-center gap-1">
-                <Calendar className="w-4 h-4" />
+                <Calendar className="w-3.5 h-3.5" />
                 <span>{experience.date}</span>
               </div>
               <div className="flex items-center gap-1">
-                <MapPin className="w-4 h-4" />
+                <MapPin className="w-3.5 h-3.5" />
                 <span>{experience.location}</span>
               </div>
             </div>
@@ -92,21 +87,21 @@ function ExperienceCardItem({ experience, index }: { experience: ExperienceItem;
         </div>
 
         {/* Description */}
-        <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+        <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed mb-4 font-sans">
           {experience.description}
         </p>
 
         {/* Highlights */}
-        <div className="mb-6">
-          <h4 className="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-3 flex items-center gap-2">
-            <Zap className="w-4 h-4" />
+        <div className="mb-4 font-sans">
+          <h4 className="text-xs font-semibold text-slate-600 dark:text-slate-400 mb-2 flex items-center gap-1.5 font-display">
+            <Zap className="w-3.5 h-3.5" />
             Key Achievements
           </h4>
-          <div className="space-y-2">
+          <div className="space-y-1">
             {experience.highlights.map((highlight, idx) => (
-              <div key={idx} className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 bg-accent rounded-full" />
-                <span className="text-sm text-slate-600 dark:text-slate-400">{highlight}</span>
+              <div key={idx} className="flex items-center gap-2 font-sans">
+                <div className="w-1.5 h-1.5 bg-accent rounded-sm" />
+                <span className="text-xs text-slate-600 dark:text-slate-400">{highlight}</span>
               </div>
             ))}
           </div>
@@ -114,15 +109,15 @@ function ExperienceCardItem({ experience, index }: { experience: ExperienceItem;
 
         {/* Skills */}
         <div>
-          <h4 className="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-3 flex items-center gap-2">
-            <Users className="w-4 h-4" />
+          <h4 className="text-xs font-semibold text-slate-600 dark:text-slate-400 mb-2 flex items-center gap-1.5 font-display">
+            <Users className="w-3.5 h-3.5" />
             Technologies
           </h4>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 font-mono">
             {experience.skills.map((skill, idx) => (
               <span
                 key={idx}
-                className="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium border border-accent/20 hover:bg-accent/20 transition-colors"
+                className="px-2.5 py-0.5 bg-accent/10 text-accent rounded-md text-xs font-medium border border-accent/20 hover:bg-accent/20 transition-colors"
               >
                 {skill}
               </span>
@@ -132,7 +127,7 @@ function ExperienceCardItem({ experience, index }: { experience: ExperienceItem;
 
         {/* Connecting line for timeline effect */}
         {index < experiences.length - 1 && (
-          <div className="absolute left-12 bottom-0 w-0.5 h-8 bg-gradient-to-b from-accent to-transparent" />
+          <div className="absolute left-10 bottom-0 w-0.5 h-6 bg-gradient-to-b from-accent to-transparent" />
         )}
       </CardContent>
     </Card>
@@ -141,32 +136,32 @@ function ExperienceCardItem({ experience, index }: { experience: ExperienceItem;
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 bg-background relative overflow-hidden rounded-4xl">
+    <section id="experience" className="py-12 bg-background relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 bg-gradient-to-r from-accent/5 via-transparent to-cta/5" />
       <div className="absolute top-20 left-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-cta/10 rounded-full blur-3xl" />
       
-      <div className="container mx-auto px-6 relative">
+      <div className="container mx-auto px-4 relative">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <div className="inline-block">
-            <h2 className="text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2 font-display">
               Professional{" "}
               <span className="bg-gradient-to-r from-accent to-cta bg-clip-text text-transparent">
                 Journey
               </span>
             </h2>
-            <div className="h-1 bg-gradient-to-r from-accent to-cta rounded-full w-24 mx-auto" />
+            <div className="h-1 bg-gradient-to-r from-accent to-cta rounded-full w-20 mx-auto" />
           </div>
-          <p className="text-xl text-slate-600 dark:text-slate-400 mt-6 max-w-2xl mx-auto">
+          <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 mt-3 max-w-2xl mx-auto font-sans">
             Crafting digital experiences and building scalable solutions with modern technologies
           </p>
         </div>
 
         {/* Timeline */}
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-8">
+        <div className="max-w-3xl mx-auto">
+          <div className="space-y-6">
             {experiences.map((exp, index) => (
               <div key={index} className="relative">
                 <ExperienceCardItem experience={exp} index={index} />
@@ -176,18 +171,18 @@ export default function Experience() {
         </div>
 
         {/* Stats Section */}
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="text-center">
-            <div className="text-4xl font-bold text-accent mb-2">2+</div>
-            <div className="text-slate-600 dark:text-slate-400">Years Experience</div>
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+          <div className="text-center p-4 bg-background/50 border border-border rounded-md">
+            <div className="text-2xl font-bold text-accent mb-1 font-display">2.5+</div>
+            <div className="text-xs text-slate-600 dark:text-slate-400 font-mono">Years Experience</div>
           </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-cta mb-2">10+</div>
-            <div className="text-slate-600 dark:text-slate-400">Projects Completed</div>
+          <div className="text-center p-4 bg-background/50 border border-border rounded-md">
+            <div className="text-2xl font-bold text-cta mb-1 font-display">15+</div>
+            <div className="text-xs text-slate-600 dark:text-slate-400 font-mono">Projects Completed</div>
           </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-emerald-500 mb-2">5+</div>
-            <div className="text-slate-600 dark:text-slate-400">Technologies Mastered</div>
+          <div className="text-center p-4 bg-background/50 border border-border rounded-md">
+            <div className="text-2xl font-bold text-emerald-500 mb-1 font-display">10+</div>
+            <div className="text-xs text-slate-600 dark:text-slate-400 font-mono">Technologies Mastered</div>
           </div>
         </div>
       </div>

@@ -6,15 +6,15 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-foreground/20 dark:bg-foreground/20 text-foreground dark:text-foreground py-6 mt-10 rounded-4xl">
+    <footer className="bg-foreground/10 dark:bg-foreground/10 text-foreground dark:text-foreground py-4 mt-6 rounded-md font-sans">
       <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
         {/* Left Side */}
         <p className="text-sm text-center md:text-left">
-          &copy; {year} Tanushree Mahato. All rights reserved.
+          &copy; <span className="font-mono">{year}</span> Tanushree Mahato. All rights reserved.
         </p>
 
         {/* Right Side - Links */}
-        <div className="flex flex-wrap gap-4 text-sm">
+        <div className="flex flex-wrap gap-4 text-sm font-sans">
           <Link href="#projects" className="hover:underline">
             Projects
           </Link>
@@ -36,7 +36,7 @@ export default function Footer() {
             href="https://leetcode.com/u/tshreem1998/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:underline text-amber-500"
+            className="hover:underline text-amber-500 font-mono"
           >
             LeetCode
           </a>
