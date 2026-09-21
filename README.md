@@ -46,7 +46,7 @@
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=flat-square&logo=mysql&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=flat-square&logo=mongodb&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=flat-square&logo=Prisma&logoColor=white)
-![Golang](https://img.shields.io/badge/Golang-3982CE?style=flat-square&logo=Golang&logoColor=white)
+![Golang](https://img.shields.io/badge/Golang-3982CE?style=flat-square&logo=Go&logoColor=white)
 ![Spree](https://img.shields.io/badge/Spree-3982CE?style=flat-square&logo=Spree&logoColor=white)
 
 #### **AI, DevOps & Tools**
