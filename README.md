@@ -1,6 +1,6 @@
 <div align="center">
 
-# Hi there, I'm Tanushree Mahato 👋
+# Hi there, I'm Tanushree Mahato
 ### Full Stack Developer & AI Solutions Engineer
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-Visit%20Site-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://tanushree-portfolio-five.vercel.app)
@@ -83,7 +83,6 @@
 | Project | Description | Tech Stack | Links |
 | :--- | :--- | :--- | :---: |
 | **[Project Architect](https://github.com/shree2698/project-architect)** | Full-lifecycle SDLC governance and tech discovery skill for AI coding assistants (Antigravity, Cursor, Claude Code) with automated 21-phase QA audits. | `AI Agents` `SDLC` `Architecture` `TypeScript` | [Repo](https://github.com/shree2698/project-architect) |
-| **[GoFlow](https://github.com/shree2698/goflow)** | Full-stack, enterprise-grade workflow management and automation application featuring async task workers, real-time WebSocket events, and Redis queuing. | `Go (Golang)` `Next.js` `PostgreSQL` `Redis` `WebSockets` `Docker` | [Repo](https://github.com/shree2698/goflow) |
 | **[QuickDesk AI Support](https://github.com/shree2698/QuickDesk)** | AI customer support & help desk platform with automated ticket routing, semantic search with RAG embeddings, and multi-tenant analytics. | `Next.js` `LangChain` `OpenAI` `PostgreSQL` `Prisma` | [Repo](https://github.com/shree2698/QuickDesk) |
 | **[OmniCRM Enterprise](https://github.com/shree2698/crm-frontend)** | Enterprise CRM platform featuring interactive Kanban deal pipelines, automated email dispatch sequences, and granular RBAC permissions. | `React` `Node.js` `Express` `MongoDB` `Redis` | [Repo](https://github.com/shree2698/crm-frontend) |
 | **[LifeSync](https://github.com/shree2698/LifeSync)** | Comprehensive personal productivity & wellness suite managing habits, finances, reminders, and daily routines. | `React` `TypeScript` `Node.js` `TailwindCSS` | [Repo](https://github.com/shree2698/LifeSync) |
